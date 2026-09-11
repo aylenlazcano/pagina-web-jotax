@@ -1,0 +1,495 @@
+/* ===== Variables / Paleta de colores ===== */
+
+:root {
+  --bg: #FAF8F4;
+  --ink: #221F1D;
+  --muted: #726860;
+  --accent: #4B2E39;
+  --accent-hover: #63424f;
+  --on-accent: #F5EFE8;
+  --on-accent-muted: #D8CFC5;
+  --line: rgba(34, 31, 29, 0.14);
+}
+
+/* ===== Tipografía base ===== */
+
+body {
+  font-family: 'Archivo', sans-serif;
+  background-color: var(--bg);
+  color: var(--ink);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+h1 {
+  font-family: 'Schibsted Grotesk', sans-serif;
+  color: var(--accent);
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: normal;
+}
+
+h2 {
+  font-family: 'Schibsted Grotesk', sans-serif;
+  color: var(--ink);
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: normal;
+}
+
+p {
+
+  font-family: 'Archivo', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+
+.btn {
+  display: inline-block;
+  background-color: var(--accent);
+  color: var(--on-accent);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.btn:hover {
+  background-color: var(--accent-hover);
+  color: var(--on-accent);
+  text-decoration: none;
+}
+/* ===== componentes de texto ===== */
+
+.eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.bajada {
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+/* ===== Links ===== */
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+section {
+  padding: 3rem 0;
+}
+
+/* ===== Header ===== */
+
+header {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.75rem 3rem;
+  z-index: 10;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: var(--on-accent);
+  opacity: 0.9;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+nav a:hover {
+  opacity: 1;
+}
+
+.logo {
+  font-family: 'Schibsted Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--on-accent);
+}
+
+.hero {
+  position: relative;
+  height: 85vh;
+  overflow: hidden;
+}
+
+.hero-texto .eyebrow {
+  color: var(--on-accent-muted);
+  margin-bottom: 1rem;
+}
+
+.hero-texto h1 { 
+  color: var(--on-accent); 
+}
+
+.hero-texto p.desc { 
+  color: var(--on-accent); opacity: 0.85;
+ }
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-texto {
+  position: absolute;
+  left: 3rem;
+  right: 3rem;
+  bottom: 3.5rem;
+  z-index: 2;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,16,14,0.38) 0%, rgba(20,16,14,0.12) 38%, rgba(15,12,10,0.82) 100%);
+}
+
+.cita {
+  padding: 5rem 3rem 6rem 3rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.cita .quote-mark {
+  font-family: 'Schibsted Grotesk', sans-serif;
+  font-size: 9rem;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.16;
+  line-height: 1;
+  margin: 0 auto -2.5rem auto;
+  user-select: none;
+  text-align: center;
+}
+
+.cita blockquote {
+  margin: 0;
+  font-family: 'Schibsted Grotesk', sans-serif;
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  max-width: 50ch;
+  text-align: center;
+}
+
+.cita cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 700;
+  margin-top: 1.75rem;
+  text-align: center;
+}
+
+.cita cite::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+  margin-right: 0.75rem;
+  vertical-align: middle;
+}
+
+/* ===== Main ===== */
+
+main {
+  padding: 0 2rem;
+}
+
+.quienes-somos {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.quienes-somos-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  flex: 0 0 40%;
+}
+
+.quienes-somos-texto {
+  flex: 1;
+  padding: 1rem;
+}
+
+.galeria-herramientas {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.galeria-herramientas figure {
+  flex: 1;
+  margin: 0;
+}
+
+.galeria-herramientas img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.porque-elegir-texto ul {
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+  flex: 1;
+  list-style: none; 
+}
+
+.porque-elegir-texto li {
+  margin-bottom: 0.75rem;
+}
+
+/* ===== header simple ===== */
+
+body.header-simple header {
+  position: static;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 2rem;
+}
+
+body.header-simple .logo,
+body.header-simple nav a {
+  color: var(--accent);
+  text-shadow: none;
+}
+
+body.header-simple nav a:hover {
+  color: var(--accent-hover);
+}
+
+/* ===== Página Nosotros ===== */
+
+.historia-imagen {
+  flex: 0 0 40%;
+}
+
+.historia-imagen img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.historia-texto {
+  flex: 1;
+}
+
+.paso {
+  flex: 1;
+}
+
+.paso-numero {
+  font-family: 'Schibsted Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--line);
+  margin-bottom: 0.5rem;
+}
+
+.proceso h2 {
+  margin-bottom: 0;
+}
+
+.proceso-pasos {
+  display: flex;
+  gap: 2rem;  
+  margin-top: 0.5rem;
+}
+
+.historia {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  padding-top: 1rem;
+}
+
+/* ===== Galerías de fotos (Servicios y Portfolio) ===== */
+
+.galeria-proyecto {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.galeria-proyecto figure {
+  flex: 1;
+  margin: 0;
+}
+
+.galeria-proyecto img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+.galeria-proyecto figcaption {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+/* ===== pagina contacto ===== */
+
+.contacto-layout {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.contacto-imagen {
+  flex: 0 0 45%;
+}
+
+.contacto-imagen img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+.contacto-imagen figcaption {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+.contacto-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contacto-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.contacto-form input,
+.contacto-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 1rem;
+  color: var(--ink);
+  background-color: var(--bg);
+}
+
+.contacto-form input:focus,
+.contacto-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.contacto-form button {
+  align-self: flex-start;
+}
+
+/* ===== CTA / Cierre ===== */
+
+.cta-cierre {
+  text-align: center; 
+  padding: 4rem 2rem;
+}
+
+/* ===== Footer ===== */
+
+footer {
+  background-color: var(--ink);
+  color: var(--bg);
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+footer a {
+  color: var(--bg);
+}
+
+.footer-top {
+  display: flex;
+  gap: 4rem;
+}
+
+.footer-titulo {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.footer-slogan {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  align-self: center;
+}

@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jotax Team | Muebles a medida en La Plata</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@600;700&family=Archivo:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
   <header>
-   <a href="index.html">Jotax Team</a>
+   <a class="logo" href="index.html">Jotax Team</a>
     <nav>
         <ul>
             <li><a href="index.html">Inicio</a></li>
@@ -18,24 +22,42 @@
         </ul>
     </nav>  
   </header>
-  <main>
-    <section>
-        <h1>Muebles a medida, diseñados para tu espacio</h1>
-        <a href="pages/contacto.html">Pedir presupuesto</a>
-    </section>
-    <section>
-        <h2>Quiénes somos</h2>
-        <p>Jotax Team nace de la amistad de Joel y Axel, dos apasionados por la carpintería que combinan calidad artesanal con tecnología de vanguardia. Diseñamos y fabricamos muebles completamente personalizados, pensados para tu espacio y tu forma de vivir.</p>
-    </section>
+    <div class="hero">
+  <img src="images/hero.2.jpg" alt="cocina a medida diseñados por Jotax Team en La Plata">
+  <div class="hero-texto">
+    <p class="eyebrow">Muebles a medida — La Plata</p>
+    <h1>Muebles a medida, diseñados para tu espacio</h1>
+    <p class="desc">Hechos con criterio, medida real y terminación de taller propio.</p>
+    <a class="btn" href="pages/contacto.html">Pedir presupuesto</a>
+  </div>
+</div>
+<main>
+    <section class="cita">
+    <p class="quote-mark" aria-hidden="true">&#8220;</p>
+    <blockquote>Cuidamos cada detalle como si el mueble fuera para nuestra propia casa.</blockquote>
+    <cite>Joel &amp; Axel — Jotax Team</cite>
+</section>
+    <section class="quienes-somos">
+        <div class="quienes-somos-image">
+            <img src="images/trabajador.jpg" alt="Trabajador de Jotax Team en el taller">
+        </div>
+        <div class="quienes-somos-texto">
+          <h2>Quiénes somos</h2>
+          <p>Jotax Team nació de la amistad de Joel y Axel, dos amigos apasionados por la carpintería que no le tienen miedo a mezclar lo artesanal con la tecnología más nueva. Cada mueble empieza escuchando tu idea y conociendo el espacio en persona, para diseñarlo pensando en cómo realmente lo vas a usar. Desde La Plata, trabajamos codo a codo con cada cliente de principio a fin, cuidando cada detalle como si el mueble fuera para nuestra propia casa.</p>
+        </div>
+    </section> 
     <section>
         <h2>¿Por qué elegir Jotax Team?</h2>
+        <div class="porque-elegir-texto">
         <ul>
             <li>Muebles 100% personalizados, diseñados a tu medida.</li>
             <li>Amplia experiencia en carpintería y acabados de calidad.</li>
             <li>Visita a tu domicilio para tomar medidas y presentarte el proyecto antes de fabricar.</li>
             <li>Diseño con mirada arquitectónica y tecnología de precisión en cada corte.</li>
         </ul>
-        <a href="pages/portfolio.html">Ver Portfolio</a>
+        <a class="btn" href="pages/portfolio.html">Ver Portfolio</a>
+    </div>
+    <div class="galeria-herramientas">
         <figure>
             <img src="images/herramientas.jpg" alt="Herramientas de carpintería utilizadas por Jotax Team para fabricar muebles a medida">
             <figcaption>Herramientas de carpintería utilizadas por Jotax Team</figcaption>
@@ -44,19 +66,35 @@
             <img src="images/midiendo.jpg" alt="cinta métrica y planos de diseño utilizados por Jotax Team para fabricar muebles a medida">
             <figcaption>Cinta métrica y planos de diseño utilizados por Jotax Team</figcaption>
         </figure>
+    </div>
     </section>
     <section>
         <h2>Contacto</h2>
         <p>¿Tienes un proyecto en mente? Contáctanos para recibir un presupuesto personalizado.</p>
-        <a href="pages/contacto.html">Contáctanos</a>
+        <a class="btn" href="pages/contacto.html">Contáctanos</a>
     </section>
   </main>
   <footer>
-    <p>&copy; 2026 Jotax Team — La Plata, Buenos Aires.</p>
-    <ul>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">WhatsApp</a></li>
-    </ul>
+    <div class="footer-top">
+        <div class="footer-col">
+            <p class="footer-titulo">Secciones</p>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="pages/nosotros.html">Quiénes Somos</a></li>
+                <li><a href="pages/servicios.html">Servicios</a></li>
+                <li><a href="pages/portfolio.html">Portfolio</a></li>
+                <li><a href="pages/contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <p class="footer-titulo">Seguinos</p>
+            <ul>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">WhatsApp</a></li>
+            </ul>
+        </div>
+    </div>
+    <p class="footer-slogan">&copy; 2026 Jotax Team — La Plata, Buenos Aires.</p>
 </footer>
 </body>
 </html>
