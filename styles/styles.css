@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* ===== Variables / Paleta de colores ===== */
 
 :root {
@@ -257,7 +263,7 @@ main {
 
 .quienes-somos-texto {
   flex: 1;
-  padding: 1rem;
+  padding: 1.25rem;
 }
 
 .galeria-herramientas {
@@ -281,6 +287,10 @@ main {
   padding: 0;
   flex: 1;
   list-style: none; 
+}
+
+.porque-elegir-texto {
+  padding: 1.25rem;
 }
 
 .porque-elegir-texto li {
@@ -320,10 +330,12 @@ body.header-simple nav a:hover {
 
 .historia-texto {
   flex: 1;
+  padding: 1.25rem;
 }
 
 .paso {
   flex: 1;
+  padding: 1.25rem;
 }
 
 .paso-numero {
