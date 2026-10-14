@@ -563,6 +563,39 @@ article .carousel-item img {
    SERVICIOS Y PORTFOLIO — galería de fotos por proyecto
    ========================================================== */
 
+.paso-card {
+  background-color: var(--ink);
+  padding: 2rem 1.75rem;
+  height: 100%;
+  border-radius: 4px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.paso-card:hover {
+  transform: translateY(-6px);
+  background-color: var(--accent);
+}
+
+.paso-card-numero {
+  display: block;
+  font-family: 'Schibsted Grotesk', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--on-accent-muted);
+  opacity: 0.35;
+  margin-bottom: 2.5rem;
+}
+
+.paso-card h3 {
+  color: var(--on-accent);
+}
+
+.paso-card p {
+  color: var(--on-accent-muted);
+  margin-bottom: 0;
+}
+
 .galeria-proyecto {
   display: flex;
   gap: 1.5rem;
