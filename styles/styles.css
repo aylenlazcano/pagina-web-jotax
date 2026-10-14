@@ -82,7 +82,9 @@ a:hover {
 
 header {
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 10;
 }
 
@@ -143,10 +145,10 @@ body.header-simple header {
 }
 
 body.header-simple .navbar {
-  --bs-navbar-color: var(--accent);          
-  --bs-navbar-hover-color: var(--accent-hover);    
-  --bs-navbar-active-color: var(--accent);  
-  --bs-navbar-toggler-border-color: var(--accent); 
+  --bs-navbar-color: var(--accent);
+  --bs-navbar-hover-color: var(--accent-hover);
+  --bs-navbar-active-color: var(--accent);
+  --bs-navbar-toggler-border-color: var(--accent);
 }
 
 body.header-simple .navbar-brand.logo {
@@ -170,7 +172,7 @@ section {
   padding: 3rem 0;
 }
 
-section + section {
+section+section {
   padding-top: 0;
 }
 
@@ -276,7 +278,7 @@ footer a {
 }
 
 .cta-cierre {
-  text-align: center; 
+  text-align: center;
   padding: 4rem 2rem;
 }
 
@@ -341,13 +343,14 @@ article .carousel-item img {
   margin-bottom: 1rem;
 }
 
-.hero-texto h1 { 
-  color: var(--on-accent); 
+.hero-texto h1 {
+  color: var(--on-accent);
 }
 
-.hero-texto p.desc { 
-  color: var(--on-accent); opacity: 0.85;
- }
+.hero-texto p.desc {
+  color: var(--on-accent);
+  opacity: 0.85;
+}
 
 .hero img {
   width: 100%;
@@ -374,7 +377,7 @@ article .carousel-item img {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15,12,10,0.55) 0%, rgba(20,16,14,0.15) 45%, rgba(15,12,10,0.85) 100%);
+  background: linear-gradient(180deg, rgba(15, 12, 10, 0.55) 0%, rgba(20, 16, 14, 0.15) 45%, rgba(15, 12, 10, 0.85) 100%);
 }
 
 .cita {
@@ -471,7 +474,7 @@ article .carousel-item img {
   margin: 0 0 1.5rem 0;
   padding: 0;
   flex: 1;
-  list-style: none; 
+  list-style: none;
 }
 
 .porque-elegir-texto {
@@ -480,7 +483,7 @@ article .carousel-item img {
 
 .porque-elegir-texto .btn {
   margin-top: 1.5rem;
-} 
+}
 
 .porque-elegir-texto li {
   margin-bottom: 0.75rem;
@@ -523,7 +526,7 @@ article .carousel-item img {
     "paso2"
     "paso3"
     "paso4";
-  gap: 2rem;  
+  gap: 2rem;
   margin-top: 0.5rem;
 }
 
@@ -540,10 +543,21 @@ article .carousel-item img {
   margin-bottom: 0.5rem;
 }
 
-.paso-1 { grid-area: paso1; }
-.paso-2 { grid-area: paso2; }
-.paso-3 { grid-area: paso3; }
-.paso-4 { grid-area: paso4; }
+.paso-1 {
+  grid-area: paso1;
+}
+
+.paso-2 {
+  grid-area: paso2;
+}
+
+.paso-3 {
+  grid-area: paso3;
+}
+
+.paso-4 {
+  grid-area: paso4;
+}
 
 /* ==========================================================
    SERVICIOS Y PORTFOLIO — galería de fotos por proyecto
@@ -655,42 +669,42 @@ article .carousel-item img {
 
 /* ===== Breakpoint desktop ===== */
 @media (min-width: 1024px) {
+
   .quienes-somos,
   .historia,
   .contacto-layout,
-  .footer-top ,
+  .footer-top,
   .galeria-herramientas,
-  .galeria-proyecto
-  {
+  .galeria-proyecto {
     flex-direction: row;
   }
 
-.proceso-pasos {
+  .proceso-pasos {
     grid-template-areas:
       "paso1 paso2"
       "paso3 paso4";
     grid-template-columns: 1fr 1fr;
-}
+  }
 
-h1 {
-  font-size: 2.5rem;
-}
+  h1 {
+    font-size: 2.5rem;
+  }
 
-h2 {
-  font-size: 1.75rem;
-}
+  h2 {
+    font-size: 1.75rem;
+  }
 
 
-.cita .quote-mark {
-  font-size: 9rem;
-} 
+  .cita .quote-mark {
+    font-size: 9rem;
+  }
 
-.cita blockquote {
-  font-size: 2.75rem;
-} 
+  .cita blockquote {
+    font-size: 2.75rem;
+  }
 
-.paso-numero {
-  font-size: 2rem;
-}
+  .paso-numero {
+    font-size: 2rem;
+  }
 
 }
