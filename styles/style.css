@@ -1,3 +1,217 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* ==========================================================
+   ETIQUETAS BASE (body, headings, p, a)
+   ========================================================== */
+body {
+  font-family: "Archivo", sans-serif;
+  background-color: #FAF8F4;
+  color: #221F1D;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+a {
+  color: #4B2E39;
+  text-decoration: none;
+}
+a:hover {
+  color: #63424f;
+  text-decoration: underline;
+}
+
+main {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 3rem 0;
+}
+section + section {
+  padding-top: 0;
+}
+
+article {
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-family: "Schibsted Grotesk", sans-serif;
+  color: #4B2E39;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: normal;
+}
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+h2 {
+  font-family: "Schibsted Grotesk", sans-serif;
+  color: #221F1D;
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: normal;
+}
+@media (min-width: 1024px) {
+  h2 {
+    font-size: 1.75rem;
+  }
+}
+
+h3 {
+  font-family: "Schibsted Grotesk", sans-serif;
+  color: #221F1D;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  font-family: "Archivo", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+/* header "simple" (todas las páginas menos index, header sólido en vez de flotante) */
+body.header-simple header {
+  position: static;
+  background-color: #FAF8F4;
+  border-bottom: 1px solid rgba(34, 31, 29, 0.14);
+}
+
+.navbar .nav-link {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+}
+
+.navbar {
+  --bs-navbar-color: #F5EFE8;
+  --bs-navbar-hover-color: #D8CFC5;
+  --bs-navbar-active-color: #F5EFE8;
+  --bs-navbar-toggler-border-color: #F5EFE8;
+  --bs-navbar-padding-x: 1.25rem;
+  --bs-navbar-padding-y: 1rem;
+}
+
+.navbar-brand.logo {
+  font-family: "Schibsted Grotesk", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #F5EFE8;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: #221F1D;
+    padding: 0.5rem 1.25rem;
+    margin-top: 0.75rem;
+  }
+  body.header-simple .navbar-collapse {
+    --bs-navbar-color: #F5EFE8;
+    --bs-navbar-hover-color: #D8CFC5;
+    --bs-navbar-active-color: #F5EFE8;
+  }
+}
+@media (min-width: 992px) {
+  .navbar {
+    --bs-navbar-padding-x: 3rem;
+    --bs-navbar-padding-y: 1.75rem;
+  }
+}
+body.header-simple .navbar {
+  --bs-navbar-color: #4B2E39;
+  --bs-navbar-hover-color: #63424f;
+  --bs-navbar-active-color: #4B2E39;
+  --bs-navbar-toggler-border-color: #4B2E39;
+}
+
+body.header-simple .navbar-brand.logo {
+  color: #4B2E39;
+  text-shadow: none;
+}
+
+body.header-simple .navbar .nav-link {
+  text-shadow: none;
+}
+
+footer {
+  background-color: #221F1D;
+  color: #FAF8F4;
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer a {
+  color: #FAF8F4;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+@media (min-width: 1024px) {
+  .footer-top {
+    flex-direction: row;
+  }
+}
+
+.footer-titulo {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.footer-slogan {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  align-self: center;
+}
 
 /*# sourceMappingURL=style.css.map */

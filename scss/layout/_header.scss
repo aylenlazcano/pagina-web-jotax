@@ -1,0 +1,18 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+/* header "simple" (todas las páginas menos index, header sólido en vez de flotante) */
+
+body.header-simple header {
+  position: static;
+  background-color: $bg;
+  border-bottom: 1px solid $line;
+}

@@ -1,0 +1,48 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================================
+   ETIQUETAS BASE (body, headings, p, a)
+   ========================================================== */
+
+body {
+  font-family: $font-texto;
+  background-color: $bg;
+  color: $ink;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+a {
+  color: $accent;
+  text-decoration: none;
+    &:hover {
+    color: $accent-hover;
+    text-decoration: underline;
+  }
+}
+
+main {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 3rem 0;
+   & + & {
+    padding-top: 0;
+  }
+}
+
+
+article {
+  margin-bottom: 3rem;
+}

@@ -1,0 +1,67 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+.navbar .nav-link {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+}
+
+.navbar {
+  --bs-navbar-color: #{$on-accent};
+  --bs-navbar-hover-color: #{$on-accent-muted};
+  --bs-navbar-active-color: #{$on-accent};
+  --bs-navbar-toggler-border-color: #{$on-accent};
+  --bs-navbar-padding-x: 1.25rem;
+  --bs-navbar-padding-y: 1rem;
+}
+
+.navbar-brand.logo {
+  font-family: $font-titulos;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: $on-accent;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: $ink;
+    padding: 0.5rem 1.25rem;
+    margin-top: 0.75rem;
+  }
+
+  body.header-simple .navbar-collapse {
+    --bs-navbar-color: #{$on-accent};
+    --bs-navbar-hover-color: #{$on-accent-muted};
+    --bs-navbar-active-color: #{$on-accent};
+  }
+
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    --bs-navbar-padding-x: 3rem;
+    --bs-navbar-padding-y: 1.75rem;
+  }
+}
+
+body.header-simple .navbar {
+  --bs-navbar-color: #{$accent};
+  --bs-navbar-hover-color: #{$accent-hover};
+  --bs-navbar-active-color: #{$accent};
+  --bs-navbar-toggler-border-color: #{$accent};
+}
+
+body.header-simple .navbar-brand.logo {
+  color: $accent;
+  text-shadow: none;
+}
+
+body.header-simple .navbar .nav-link {
+  text-shadow: none;
+}
+

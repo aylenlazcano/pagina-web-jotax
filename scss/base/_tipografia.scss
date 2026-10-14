@@ -1,0 +1,43 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+h1 {
+  font-family: $font-titulos;
+  color: $accent;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: normal;
+
+  @include desktop {
+    font-size: 2.5rem;
+  }
+}
+
+
+h2 {
+  font-family: $font-titulos;
+  color: $ink;
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: normal;
+
+  @include desktop {
+    font-size: 1.75rem;
+  }
+}
+
+h3 {
+  font-family: $font-titulos;
+  color: $ink;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  font-family: $font-texto;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
