@@ -1,0 +1,24 @@
+{
+  "name": "pagina-web-jotax",
+  "version": "1.0.0",
+  "description": "Sitio web de Jotax Team, taller de muebles a medida en melamina de La Plata.",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch scss/main.scss styles/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aylenlazcano/pagina-web-jotax.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/aylenlazcano/pagina-web-jotax/issues"
+  },
+  "homepage": "https://github.com/aylenlazcano/pagina-web-jotax#readme",
+  "devDependencies": {
+    "sass": "^1.105.1"
+  }
+}

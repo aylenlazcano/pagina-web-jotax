@@ -1,0 +1,23 @@
+@use "variables" as *;
+
+// Media query de desktop (lo usás en casi todos los componentes)
+@mixin desktop {
+  @media (min-width: $bp-desktop) {
+    @content;
+  }
+}
+
+// Etiquetas chiquitas en mayúscula (footer-titulo, footer-slogan, eyebrow)
+@mixin etiqueta {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+// Imágenes que llenan su caja sin deformarse
+@mixin img-cover($alto) {
+  width: 100%;
+  height: $alto;
+  object-fit: cover;
+}
