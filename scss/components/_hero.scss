@@ -3,6 +3,30 @@
 
 // Hero del index (carousel a pantalla completa con texto encima)
 
+@keyframes alejar-foto {
+  from {
+    transform: scale(1.1);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes revelar {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
 .hero {
   position: relative;
   height: 85vh;
@@ -11,6 +35,7 @@
   img {
     @include img-cover(100%);
     display: block;
+    animation: alejar-foto 2.5s $ease-premium;
   }
 
   .carousel,
@@ -33,18 +58,32 @@
     bottom: 3.5rem;
     z-index: 2;
 
+    .eyebrow,
+    h1,
+    p.desc,
+    .btn {
+      animation: revelar 1.2s $ease-premium both;
+    }
+
     .eyebrow {
       color: $on-accent-muted;
       margin-bottom: 1rem;
+      animation-delay: $retraso-base * 1;
     }
 
     h1 {
       color: $on-accent;
+      animation-delay: $retraso-base * 2;
     }
 
     p.desc {
       color: $on-accent;
       opacity: 0.85;
+      animation-delay: $retraso-base * 3;
+    }
+
+    .btn {
+      animation-delay: $retraso-base * 4;
     }
   }
 }
