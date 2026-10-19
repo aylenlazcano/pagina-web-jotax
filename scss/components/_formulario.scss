@@ -5,7 +5,10 @@
 
 .contacto-layout {
   @include columna-a-fila(3rem);
-  align-items: flex-start;
+
+  @include desktop {
+    align-items: flex-start;
+  }
 }
 
 .contacto-imagen {

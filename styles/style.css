@@ -522,8 +522,10 @@ article .carousel-item img {
     flex-direction: row;
   }
 }
-.quienes-somos {
-  align-items: center;
+@media (min-width: 1024px) {
+  .quienes-somos {
+    align-items: center;
+  }
 }
 .quienes-somos-image {
   flex: 0 0 40%;
@@ -549,8 +551,12 @@ article .carousel-item img {
   }
 }
 .historia {
-  align-items: flex-start;
   padding-top: 1rem;
+}
+@media (min-width: 1024px) {
+  .historia {
+    align-items: flex-start;
+  }
 }
 .historia-imagen {
   flex: 0 0 40%;
@@ -637,8 +643,10 @@ article .carousel-item img {
     flex-direction: row;
   }
 }
-.contacto-layout {
-  align-items: flex-start;
+@media (min-width: 1024px) {
+  .contacto-layout {
+    align-items: flex-start;
+  }
 }
 
 .contacto-imagen {
