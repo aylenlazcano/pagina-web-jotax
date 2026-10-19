@@ -379,6 +379,26 @@ article .carousel-item img {
   background-color: rgba(75, 46, 57, 0.45);
 }
 
+@keyframes alejar-foto {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes revelar {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
 .hero {
   position: relative;
   height: 85vh;
@@ -389,6 +409,7 @@ article .carousel-item img {
   height: 100%;
   object-fit: cover;
   display: block;
+  animation: alejar-foto 2.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .hero .carousel,
 .hero .carousel-inner,
@@ -408,16 +429,28 @@ article .carousel-item img {
   bottom: 3.5rem;
   z-index: 2;
 }
+.hero-texto .eyebrow,
+.hero-texto h1,
+.hero-texto p.desc,
+.hero-texto .btn {
+  animation: revelar 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
 .hero-texto .eyebrow {
   color: #D8CFC5;
   margin-bottom: 1rem;
+  animation-delay: 0.15s;
 }
 .hero-texto h1 {
   color: #F5EFE8;
+  animation-delay: 0.3s;
 }
 .hero-texto p.desc {
   color: #F5EFE8;
   opacity: 0.85;
+  animation-delay: 0.45s;
+}
+.hero-texto .btn {
+  animation-delay: 0.6s;
 }
 
 .cita {
