@@ -23,21 +23,23 @@ body {
 a {
   color: $accent;
   text-decoration: none;
-    &:hover {
+
+  &:hover {
     color: $accent-hover;
     text-decoration: underline;
   }
 }
 
 main {
-  max-width: 1300px;
+  max-width: $ancho-max;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
 section {
   padding: 3rem 0;
-   & + & {
+
+  & + & {
     padding-top: 0;
   }
 }

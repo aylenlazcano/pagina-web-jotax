@@ -7,6 +7,17 @@
   }
 }
 
+// Bloques flex mobile-first: en columna en mobile, en fila desde desktop
+@mixin columna-a-fila($gap) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+
+  @include desktop {
+    flex-direction: row;
+  }
+}
+
 // Etiquetas chiquitas en mayúscula (footer-titulo, footer-slogan, eyebrow)
 @mixin etiqueta {
   font-size: 0.75rem;
@@ -20,4 +31,11 @@
   width: 100%;
   height: $alto;
   object-fit: cover;
+}
+
+// Epígrafes de fotos (figcaption)
+@mixin epigrafe {
+  font-size: 0.8rem;
+  color: $muted;
+  margin-top: 0.5rem;
 }
