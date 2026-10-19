@@ -1,0 +1,29 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+.btn {
+  display: inline-block;
+  background-color: $accent;
+  color: $on-accent;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  transition: background-color $transicion, color $transicion;
+
+  &:hover {
+    background-color: $accent-hover;
+    color: $on-accent;
+    text-decoration: none;
+    outline: none;
+    box-shadow: 0 0 0 3px $on-accent-muted;
+  }
+
+  &:active {
+    background-color: $accent;
+  }
+}

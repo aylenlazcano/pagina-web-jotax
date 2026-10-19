@@ -170,13 +170,11 @@ footer {
   align-items: flex-start;
   gap: 1.5rem;
 }
-
 footer ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 footer a {
   color: #FAF8F4;
 }
@@ -214,4 +212,442 @@ footer a {
   align-self: center;
 }
 
-/*# sourceMappingURL=style.css.map */
+.btn {
+  display: inline-block;
+  background-color: #4B2E39;
+  color: #F5EFE8;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.btn:hover {
+  background-color: #63424f;
+  color: #F5EFE8;
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0 0 0 3px #D8CFC5;
+}
+.btn:active {
+  background-color: #4B2E39;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: #4B2E39;
+  margin-bottom: 0.5rem;
+}
+
+.bajada {
+  font-size: 1.25rem;
+  color: #221F1D;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.cta-cierre {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.paso-card {
+  background-color: #221F1D;
+  padding: 2rem 1.75rem;
+  height: 100%;
+  border-radius: 4px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.paso-card:hover {
+  transform: translateY(-6px);
+  background-color: #4B2E39;
+}
+.paso-card-numero {
+  display: block;
+  font-family: "Schibsted Grotesk", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #D8CFC5;
+  opacity: 0.35;
+  margin-bottom: 2.5rem;
+}
+.paso-card h3 {
+  color: #F5EFE8;
+}
+.paso-card p {
+  color: #D8CFC5;
+  margin-bottom: 0;
+}
+
+.proceso h2 {
+  margin-bottom: 0;
+}
+.proceso-pasos {
+  display: grid;
+  grid-template-areas: "paso1" "paso2" "paso3" "paso4";
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+@media (min-width: 1024px) {
+  .proceso-pasos {
+    grid-template-areas: "paso1 paso2" "paso3 paso4";
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.paso {
+  flex: 1;
+  padding: 1.25rem;
+}
+.paso-numero {
+  font-family: "Schibsted Grotesk", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgba(34, 31, 29, 0.14);
+  margin-bottom: 0.5rem;
+}
+@media (min-width: 1024px) {
+  .paso-numero {
+    font-size: 2rem;
+  }
+}
+.paso-1 {
+  grid-area: paso1;
+}
+.paso-2 {
+  grid-area: paso2;
+}
+.paso-3 {
+  grid-area: paso3;
+}
+.paso-4 {
+  grid-area: paso4;
+}
+
+.accordion {
+  --bs-accordion-bg: #FAF8F4;
+  --bs-accordion-color: #221F1D;
+  --bs-accordion-border-color: rgba(34, 31, 29, 0.14);
+  --bs-accordion-border-radius: 0;
+  --bs-accordion-inner-border-radius: 0;
+  --bs-accordion-btn-color: #221F1D;
+  --bs-accordion-btn-bg: #FAF8F4;
+  --bs-accordion-active-color: #4B2E39;
+  --bs-accordion-active-bg: #FAF8F4;
+  --bs-accordion-btn-focus-border-color: #4B2E39;
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem rgba(75, 46, 57, 0.25);
+  --bs-accordion-btn-padding-y: 1.25rem;
+}
+.accordion-button {
+  font-family: "Schibsted Grotesk", sans-serif;
+  font-weight: 600;
+}
+
+article .carousel-item img {
+  height: 450px;
+  object-fit: cover;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 3.5rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+.carousel-control-prev:hover, .carousel-control-prev:focus,
+.carousel-control-next:hover,
+.carousel-control-next:focus {
+  opacity: 1;
+  background-color: rgba(75, 46, 57, 0.3);
+  outline: none;
+}
+.carousel-control-prev:active,
+.carousel-control-next:active {
+  background-color: rgba(75, 46, 57, 0.45);
+}
+
+.hero {
+  position: relative;
+  height: 85vh;
+  overflow: hidden;
+}
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero .carousel,
+.hero .carousel-inner,
+.hero .carousel-item {
+  height: 100%;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 12, 10, 0.55) 0%, rgba(20, 16, 14, 0.15) 45%, rgba(15, 12, 10, 0.85) 100%);
+}
+.hero-texto {
+  position: absolute;
+  left: 3rem;
+  right: 3rem;
+  bottom: 3.5rem;
+  z-index: 2;
+}
+.hero-texto .eyebrow {
+  color: #D8CFC5;
+  margin-bottom: 1rem;
+}
+.hero-texto h1 {
+  color: #F5EFE8;
+}
+.hero-texto p.desc {
+  color: #F5EFE8;
+  opacity: 0.85;
+}
+
+.cita {
+  padding: 5rem 3rem 6rem 3rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+}
+.cita .quote-mark {
+  font-family: "Schibsted Grotesk", sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #4B2E39;
+  opacity: 0.16;
+  line-height: 1;
+  margin: 0 auto -2.5rem auto;
+  user-select: none;
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  .cita .quote-mark {
+    font-size: 9rem;
+  }
+}
+.cita blockquote {
+  margin: 0;
+  font-family: "Schibsted Grotesk", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #221F1D;
+  max-width: 50ch;
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  .cita blockquote {
+    font-size: 2.75rem;
+  }
+}
+.cita cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #4B2E39;
+  font-weight: 700;
+  margin-top: 1.75rem;
+  text-align: center;
+}
+.cita cite::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: #4B2E39;
+  margin-right: 0.75rem;
+  vertical-align: middle;
+}
+
+.quienes-somos {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@media (min-width: 1024px) {
+  .quienes-somos {
+    flex-direction: row;
+  }
+}
+.quienes-somos {
+  align-items: center;
+}
+.quienes-somos-image {
+  flex: 0 0 40%;
+}
+.quienes-somos-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+.quienes-somos-texto {
+  flex: 1;
+  padding: 1.25rem;
+}
+
+.historia {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+@media (min-width: 1024px) {
+  .historia {
+    flex-direction: row;
+  }
+}
+.historia {
+  align-items: flex-start;
+  padding-top: 1rem;
+}
+.historia-imagen {
+  flex: 0 0 40%;
+}
+.historia-imagen img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+.historia-texto {
+  flex: 1;
+  padding: 1.25rem;
+}
+
+.porque-elegir-texto {
+  padding: 1.25rem 0;
+}
+.porque-elegir-texto ul {
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+  flex: 1;
+  list-style: none;
+}
+.porque-elegir-texto li {
+  margin-bottom: 0.75rem;
+}
+.porque-elegir-texto .btn {
+  margin-top: 1.5rem;
+}
+
+.galeria-herramientas {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .galeria-herramientas {
+    flex-direction: row;
+  }
+}
+.galeria-herramientas figure {
+  flex: 1;
+  margin: 0;
+}
+.galeria-herramientas img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.galeria-proyecto {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .galeria-proyecto {
+    flex-direction: row;
+  }
+}
+.galeria-proyecto {
+  margin-top: 1.5rem;
+}
+.galeria-proyecto figure {
+  flex: 1;
+  margin: 0;
+}
+.galeria-proyecto img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+.galeria-proyecto figcaption {
+  font-size: 0.8rem;
+  color: #726860;
+  margin-top: 0.5rem;
+}
+
+.contacto-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+@media (min-width: 1024px) {
+  .contacto-layout {
+    flex-direction: row;
+  }
+}
+.contacto-layout {
+  align-items: flex-start;
+}
+
+.contacto-imagen {
+  flex: 0 0 45%;
+}
+.contacto-imagen img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+}
+.contacto-imagen figcaption {
+  font-size: 0.8rem;
+  color: #726860;
+  margin-top: 0.5rem;
+}
+
+.contacto-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.contacto-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #221F1D;
+}
+.contacto-form input,
+.contacto-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(34, 31, 29, 0.14);
+  border-radius: 4px;
+  font-family: "Archivo", sans-serif;
+  font-size: 1rem;
+  color: #221F1D;
+  background-color: #FAF8F4;
+}
+.contacto-form input:focus,
+.contacto-form textarea:focus {
+  outline: none;
+  border-color: #4B2E39;
+}
+.contacto-form button {
+  align-self: flex-start;
+}

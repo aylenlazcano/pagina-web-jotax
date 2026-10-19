@@ -1,0 +1,65 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// Bloque de cita destacada del index
+
+.cita {
+  padding: 5rem 3rem 6rem 3rem;
+  max-width: $ancho-max;
+  margin: 0 auto;
+  position: relative;
+
+  .quote-mark {
+    font-family: $font-titulos;
+    font-size: 4rem;
+    font-weight: 700;
+    color: $accent;
+    opacity: 0.16;
+    line-height: 1;
+    margin: 0 auto -2.5rem auto;
+    user-select: none;
+    text-align: center;
+
+    @include desktop {
+      font-size: 9rem;
+    }
+  }
+
+  blockquote {
+    margin: 0;
+    font-family: $font-titulos;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: $ink;
+    max-width: 50ch;
+    text-align: center;
+
+    @include desktop {
+      font-size: 2.75rem;
+    }
+  }
+
+  cite {
+    display: block;
+    font-style: normal;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $accent;
+    font-weight: 700;
+    margin-top: 1.75rem;
+    text-align: center;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: $accent;
+      margin-right: 0.75rem;
+      vertical-align: middle;
+    }
+  }
+}

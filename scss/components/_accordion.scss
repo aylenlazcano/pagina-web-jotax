@@ -1,0 +1,24 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// Personalización del accordion de Bootstrap (preguntas frecuentes)
+
+.accordion {
+  --bs-accordion-bg: #{$bg};
+  --bs-accordion-color: #{$ink};
+  --bs-accordion-border-color: #{$line};
+  --bs-accordion-border-radius: 0;
+  --bs-accordion-inner-border-radius: 0;
+  --bs-accordion-btn-color: #{$ink};
+  --bs-accordion-btn-bg: #{$bg};
+  --bs-accordion-active-color: #{$accent};
+  --bs-accordion-active-bg: #{$bg};
+  --bs-accordion-btn-focus-border-color: #{$accent};
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem #{rgba($accent, 0.25)};
+  --bs-accordion-btn-padding-y: 1.25rem;
+
+  &-button {
+    font-family: $font-titulos;
+    font-weight: 600;
+  }
+}

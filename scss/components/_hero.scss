@@ -1,0 +1,50 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// Hero del index (carousel a pantalla completa con texto encima)
+
+.hero {
+  position: relative;
+  height: 85vh;
+  overflow: hidden;
+
+  img {
+    @include img-cover(100%);
+    display: block;
+  }
+
+  .carousel,
+  .carousel-inner,
+  .carousel-item {
+    height: 100%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba($overlay-oscuro, 0.55) 0%, rgba($overlay-medio, 0.15) 45%, rgba($overlay-oscuro, 0.85) 100%);
+  }
+
+  &-texto {
+    position: absolute;
+    left: 3rem;
+    right: 3rem;
+    bottom: 3.5rem;
+    z-index: 2;
+
+    .eyebrow {
+      color: $on-accent-muted;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      color: $on-accent;
+    }
+
+    p.desc {
+      color: $on-accent;
+      opacity: 0.85;
+    }
+  }
+}

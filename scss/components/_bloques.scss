@@ -1,0 +1,61 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// Bloques imagen + texto (Quiénes somos en index, Historia en nosotros)
+// y la lista de "Por qué elegirnos"
+
+.quienes-somos {
+  @include columna-a-fila(2rem);
+  align-items: center;
+
+  &-image {
+    flex: 0 0 40%;
+
+    img {
+      @include img-cover(400px);
+    }
+  }
+
+  &-texto {
+    flex: 1;
+    padding: 1.25rem;
+  }
+}
+
+.historia {
+  @include columna-a-fila(3rem);
+  align-items: flex-start;
+  padding-top: 1rem;
+
+  &-imagen {
+    flex: 0 0 40%;
+
+    img {
+      @include img-cover(500px);
+    }
+  }
+
+  &-texto {
+    flex: 1;
+    padding: 1.25rem;
+  }
+}
+
+.porque-elegir-texto {
+  padding: 1.25rem 0;
+
+  ul {
+    margin: 0 0 1.5rem 0;
+    padding: 0;
+    flex: 1;
+    list-style: none;
+  }
+
+  li {
+    margin-bottom: 0.75rem;
+  }
+
+  .btn {
+    margin-top: 1.5rem;
+  }
+}

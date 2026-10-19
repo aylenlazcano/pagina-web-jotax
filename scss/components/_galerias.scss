@@ -1,0 +1,36 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// Galerías de fotos (herramientas en index, proyectos en servicios/portfolio)
+
+.galeria-herramientas {
+  @include columna-a-fila($gap-galeria);
+
+  figure {
+    flex: 1;
+    margin: 0;
+  }
+
+  img {
+    @include img-cover(300px);
+  }
+}
+
+.galeria-proyecto {
+  @include columna-a-fila($gap-galeria);
+  margin-top: 1.5rem;
+
+  figure {
+    flex: 1;
+    margin: 0;
+  }
+
+  img {
+    @include img-cover(320px);
+    display: block;
+  }
+
+  figcaption {
+    @include epigrafe;
+  }
+}

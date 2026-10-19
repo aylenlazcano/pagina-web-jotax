@@ -1,0 +1,83 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// Cards de pasos (Servicios) y pasos del proceso (Nosotros)
+
+.paso-card {
+  background-color: $ink;
+  padding: 2rem 1.75rem;
+  height: 100%;
+  border-radius: $radio-borde;
+  transition: transform $transicion-lenta, background-color $transicion-lenta;
+
+  &:hover {
+    transform: translateY(-6px);
+    background-color: $accent;
+  }
+
+  &-numero {
+    display: block;
+    font-family: $font-titulos;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    color: $on-accent-muted;
+    opacity: 0.35;
+    margin-bottom: 2.5rem;
+  }
+
+  h3 {
+    color: $on-accent;
+  }
+
+  p {
+    color: $on-accent-muted;
+    margin-bottom: 0;
+  }
+}
+
+.proceso {
+  h2 {
+    margin-bottom: 0;
+  }
+
+  &-pasos {
+    display: grid;
+    grid-template-areas:
+      "paso1"
+      "paso2"
+      "paso3"
+      "paso4";
+    gap: 2rem;
+    margin-top: 0.5rem;
+
+    @include desktop {
+      grid-template-areas:
+        "paso1 paso2"
+        "paso3 paso4";
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+.paso {
+  flex: 1;
+  padding: 1.25rem;
+
+  &-numero {
+    font-family: $font-titulos;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $line;
+    margin-bottom: 0.5rem;
+
+    @include desktop {
+      font-size: 2rem;
+    }
+  }
+
+  &-1 { grid-area: paso1; }
+  &-2 { grid-area: paso2; }
+  &-3 { grid-area: paso3; }
+  &-4 { grid-area: paso4; }
+}
