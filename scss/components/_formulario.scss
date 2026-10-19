@@ -1,0 +1,56 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// Página de contacto: imagen + formulario
+
+.contacto-layout {
+  @include columna-a-fila(3rem);
+  align-items: flex-start;
+}
+
+.contacto-imagen {
+  flex: 0 0 45%;
+
+  img {
+    @include img-cover(480px);
+    display: block;
+  }
+
+  figcaption {
+    @include epigrafe;
+  }
+}
+
+.contacto-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $ink;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid $line;
+    border-radius: $radio-borde;
+    font-family: $font-texto;
+    font-size: 1rem;
+    color: $ink;
+    background-color: $bg;
+
+    &:focus {
+      outline: none;
+      border-color: $accent;
+    }
+  }
+
+  button {
+    align-self: flex-start;
+  }
+}

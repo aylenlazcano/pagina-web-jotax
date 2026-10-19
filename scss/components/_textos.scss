@@ -1,0 +1,22 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// Textos reutilizables: eyebrow, bajada y bloque de cierre con CTA
+
+.eyebrow {
+  @include etiqueta;
+  color: $accent;
+  margin-bottom: 0.5rem;
+}
+
+.bajada {
+  font-size: 1.25rem;
+  color: $ink;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.cta-cierre {
+  text-align: center;
+  padding: 4rem 2rem;
+}

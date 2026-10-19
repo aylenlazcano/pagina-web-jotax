@@ -1,7 +1,29 @@
+// ==========================================================
+// MAIN.SCSS — único punto de entrada.
+// Se compila con: npm run sass  →  styles/style.css
+// ==========================================================
+
+// 1. Utilities (variables y mixins, no generan CSS)
 @use "utilities/variables";
 @use "utilities/mixins";
+
+// 2. Base (reset y estilos globales a etiquetas)
 @use "base/base";
 @use "base/tipografia";
+
+// 3. Layout (estructura compartida por las 5 páginas)
 @use "layout/header";
 @use "layout/nav";
 @use "layout/footer";
+
+// 4. Components (piezas repetibles)
+@use "components/buttons";
+@use "components/textos";
+@use "components/cards";
+@use "components/accordion";
+@use "components/carousel";
+@use "components/hero";
+@use "components/cita";
+@use "components/bloques";
+@use "components/galerias";
+@use "components/formulario";
