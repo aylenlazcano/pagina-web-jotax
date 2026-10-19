@@ -14,6 +14,8 @@
     <!--bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!--AOS-->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
     <!--css-->
     <link rel="stylesheet" href="../styles/style.css">
 </head>
@@ -54,7 +56,7 @@
             <p class="eyebrow">Proceso</p>
             <h2>Cómo trabajamos</h2>
             <div class="row g-4 mt-3">
-                <article class="col-12 col-md-6 col-lg-3 mb-0">
+                <article class="col-12 col-md-6 col-lg-3 mb-0" data-aos="fade-up" data-aos-delay="0">
                     <div class="paso-card">
                         <span class="paso-card-numero">01</span>
                         <h3>Consulta y visita a domicilio</h3>
@@ -62,7 +64,7 @@
                         </p>
                     </div>
                 </article>
-                <article class="col-12 col-md-6 col-lg-3 mb-0">
+                <article class="col-12 col-md-6 col-lg-3 mb-0" data-aos="fade-up" data-aos-delay="100">
                     <div class="paso-card">
                         <span class="paso-card-numero">02</span>
                         <h3>Diseño a medida</h3>
@@ -71,14 +73,14 @@
                         </p>
                     </div>
                 </article>
-                <article class="col-12 col-md-6 col-lg-3 mb-0">
+                <article class="col-12 col-md-6 col-lg-3 mb-0" data-aos="fade-up" data-aos-delay="200">
                     <div class="paso-card">
                         <span class="paso-card-numero">03</span>
                         <h3>Fabricación</h3>
                         <p>Combinamos técnicas artesanales con tecnología de precisión para fabricar cada pieza.</p>
                     </div>
                 </article>
-                <article class="col-12 col-md-6 col-lg-3 mb-0">
+                <article class="col-12 col-md-6 col-lg-3 mb-0" data-aos="fade-up" data-aos-delay="300">
                     <div class="paso-card">
                         <span class="paso-card-numero">04</span>
                         <h3>Instalación</h3>
@@ -128,6 +130,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-out-cubic',
+            once: true
+        });
+    </script>
 </body>
 
 </html>

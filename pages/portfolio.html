@@ -14,6 +14,8 @@
   <!--bootstrap-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <!--AOS-->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <!--css-->
   <link rel="stylesheet" href="../styles/style.css">
 </head>
@@ -57,7 +59,7 @@
     </section>
     <section>
       <h2>Proyectos realizados</h2>
-      <article>
+      <article data-aos="fade-up">
         <h3>Proyecto de cocina</h3>
         <p>Cocina completa fabricada a medida, combinando funcionalidad y estética para el uso diario.</p>
         <div id="carouselCocina" class="carousel slide" data-bs-ride="carousel">
@@ -82,7 +84,7 @@
           </button>
         </div>
       </article>
-      <article>
+      <article data-aos="fade-up">
         <h3>Proyecto de living</h3>
         <p>Mueble de TV y estantería a medida, pensado para integrarse con el resto del ambiente.</p>
         <div id="carouselLiving" class="carousel slide" data-bs-ride="carousel">
@@ -107,7 +109,7 @@
           </button>
         </div>
       </article>
-      <article>
+      <article data-aos="fade-up">
         <h3>Proyecto de dormitorio</h3>
         <p>Vestidor completo en melamina, diseñado para aprovechar cada rincón del espacio.</p>
         <div id="carouselVestidor" class="carousel slide" data-bs-ride="carousel">
@@ -160,6 +162,15 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-out-cubic',
+      once: true
+    });
+  </script>
 </body>
 
 </html>
