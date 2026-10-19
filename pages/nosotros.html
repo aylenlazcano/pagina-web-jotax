@@ -14,6 +14,8 @@
     <!--bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
     <!--css-->
     <link rel="stylesheet" href="../styles/style.css">
 </head>
@@ -55,7 +57,7 @@
             <h1>Somos Jotax Team</h1>
             <p class="bajada">Diseñamos y hacemos muebles a medida.</p>
         </section>
-        <section class="historia">
+        <section class="historia" data-aos="fade-up">
             <div class="historia-imagen">
                 <img src="../images/trabajador.jpg" alt="Trabajador de Jotax Team en el taller">
             </div>
@@ -70,22 +72,22 @@
         <section class="proceso">
             <h2>Cómo trabajamos</h2>
             <div class="proceso-pasos">
-                <div class="paso paso-1">
+                <div class="paso paso-1" data-aos="fade-up" data-aos-delay="0">
                     <p class="paso-numero">01</p>
                     <h3>Medimos</h3>
                     <p>Vamos a tu domicilio y tomamos las medidas del espacio.</p>
                 </div>
-                <div class="paso paso-2">
+                <div class="paso paso-2" data-aos="fade-up" data-aos-delay="100">
                     <p class="paso-numero">02</p>
                     <h3>Diseñamos</h3>
                     <p>Definimos el mueble teniendo en cuenta el espacio y cómo lo vas a usar.</p>
                 </div>
-                <div class="paso paso-3">
+                <div class="paso paso-3" data-aos="fade-up" data-aos-delay="200">
                     <p class="paso-numero">03</p>
                     <h3>Fabricamos</h3>
                     <p>Cortamos, mecanizamos y armamos cada pieza en nuestro taller.</p>
                 </div>
-                <div class="paso paso-4">
+                <div class="paso paso-4" data-aos="fade-up" data-aos-delay="300">
                     <p class="paso-numero">04</p>
                     <h3>Instalamos</h3>
                     <p>Llevamos el mueble terminado y nos encargamos de dejarlo en su lugar.</p>
@@ -124,6 +126,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-out-cubic',
+            once: true
+        });
+    </script>
+
+
 </body>
 
 </html>
