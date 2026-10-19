@@ -3,12 +3,16 @@
 
 // Galerías de fotos (herramientas en index, proyectos en servicios/portfolio)
 
+%figura-galeria {
+  flex: 1;
+  margin: 0;
+}
+
 .galeria-herramientas {
   @include columna-a-fila($gap-galeria);
 
   figure {
-    flex: 1;
-    margin: 0;
+    @extend %figura-galeria;
   }
 
   img {
@@ -21,8 +25,7 @@
   margin-top: 1.5rem;
 
   figure {
-    flex: 1;
-    margin: 0;
+    @extend %figura-galeria;
   }
 
   img {

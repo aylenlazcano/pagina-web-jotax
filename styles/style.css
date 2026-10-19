@@ -543,6 +543,11 @@ article .carousel-item img {
   margin-top: 1.5rem;
 }
 
+.galeria-proyecto figure, .galeria-herramientas figure {
+  flex: 1;
+  margin: 0;
+}
+
 .galeria-herramientas {
   display: flex;
   flex-direction: column;
@@ -552,10 +557,6 @@ article .carousel-item img {
   .galeria-herramientas {
     flex-direction: row;
   }
-}
-.galeria-herramientas figure {
-  flex: 1;
-  margin: 0;
 }
 .galeria-herramientas img {
   width: 100%;
@@ -575,10 +576,6 @@ article .carousel-item img {
 }
 .galeria-proyecto {
   margin-top: 1.5rem;
-}
-.galeria-proyecto figure {
-  flex: 1;
-  margin: 0;
 }
 .galeria-proyecto img {
   width: 100%;
@@ -651,3 +648,5 @@ article .carousel-item img {
 .contacto-form button {
   align-self: flex-start;
 }
+
+/*# sourceMappingURL=style.css.map */
