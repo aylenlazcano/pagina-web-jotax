@@ -301,7 +301,7 @@ footer a {
   gap: 2rem;
   margin-top: 0.5rem;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .proceso-pasos {
     grid-template-areas: "paso1 paso2" "paso3 paso4";
     grid-template-columns: 1fr 1fr;
