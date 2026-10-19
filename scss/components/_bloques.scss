@@ -6,7 +6,10 @@
 
 .quienes-somos {
   @include columna-a-fila(2rem);
-  align-items: center;
+
+  @include desktop {
+    align-items: center;
+  }
 
   &-image {
     flex: 0 0 40%;
@@ -24,8 +27,11 @@
 
 .historia {
   @include columna-a-fila(3rem);
-  align-items: flex-start;
   padding-top: 1rem;
+
+  @include desktop {
+    align-items: flex-start;
+  }
 
   &-imagen {
     flex: 0 0 40%;
