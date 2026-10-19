@@ -8,6 +8,11 @@ $on-accent: #F5EFE8;
 $on-accent-muted: #D8CFC5;
 $line: rgba(34, 31, 29, 0.14);
 
+// Sombras y overlays (se combinan con rgba() en los componentes)
+$negro: #000;
+$overlay-oscuro: #0F0C0A;
+$overlay-medio: #14100E;
+
 // ===== Tipografías =====
 $font-titulos: 'Schibsted Grotesk', sans-serif;
 $font-texto: 'Archivo', sans-serif;
@@ -18,3 +23,9 @@ $bp-desktop: 1024px;
 
 // ===== Medidas =====
 $ancho-max: 1300px;
+$radio-borde: 4px;
+$gap-galeria: 1.5rem;
+
+// ===== Transiciones =====
+$transicion: 0.2s ease;
+$transicion-lenta: 0.3s ease;
