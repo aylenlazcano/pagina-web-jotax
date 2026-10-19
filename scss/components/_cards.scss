@@ -51,7 +51,7 @@
     gap: 2rem;
     margin-top: 0.5rem;
 
-    @include desktop {
+    @include tablet {
       grid-template-areas:
         "paso1 paso2"
         "paso3 paso4";
