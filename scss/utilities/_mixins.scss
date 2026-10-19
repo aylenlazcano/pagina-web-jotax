@@ -1,5 +1,13 @@
 @use "variables" as *;
 
+
+// Media query de tablet (desde 768px)
+@mixin tablet {
+  @media (min-width: $bp-tablet) {
+    @content;
+  }
+}
+
 // Media query de desktop (lo usás en casi todos los componentes)
 @mixin desktop {
   @media (min-width: $bp-desktop) {
