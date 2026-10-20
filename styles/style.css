@@ -403,6 +403,7 @@ article .carousel-item img {
   position: relative;
   height: 85vh;
   overflow: hidden;
+  padding: 0;
 }
 .hero img {
   width: 100%;
