@@ -31,13 +31,15 @@ a {
 }
 
 main {
-  max-width: $ancho-max;
-  margin: 0 auto;
-  padding: 0 2rem;
+  display: block;
 }
 
 section {
-  padding: 3rem 0;
+  padding: 3rem $margen-lateral-mobile;
+
+  @include desktop {
+    padding: 3rem $margen-lateral;
+  }
 
   & + & {
     padding-top: 0;

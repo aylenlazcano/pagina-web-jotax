@@ -30,6 +30,11 @@
     text-transform: uppercase;
     margin: 0;
 
+    &.logo--firma {
+      @include etiqueta(0.18em);
+      font-weight: 400;
+    }
+
     &:hover {
       text-decoration: none;
     }
@@ -84,8 +89,8 @@
 
 // Mobile y tablet: menú desplegado con líneas entre links
 @media (max-width: $bp-nav - 0.02px) {
-  
- // Con el menú abierto, toda la barra toma el fondo claro
+
+  // Con el menú abierto, toda la barra toma el fondo claro
   .navbar:has(.navbar-collapse.show),
   .navbar:has(.navbar-collapse.collapsing) {
     background-color: $bg;

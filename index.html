@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@600;700;800&family=Archivo:wght@400;600;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;800&family=Archivo:wght@400;600;800&display=swap"
     rel="stylesheet">
   <!--bootstrap-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -28,7 +28,7 @@
   <header>
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand logo" href="index.html" aria-label="Jotax Team, inicio">Team</a>
+        <a class="navbar-brand logo logo--firma" href="index.html" aria-label="Jotax Team, inicio">Team</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
           aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menú">
           <span class="navbar-toggler-icon"></span>
@@ -55,35 +55,24 @@
       </div>
     </nav>
   </header>
-  <section class="hero">
-    <div id="carouselHero" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="assets/images/cocina-a-medida-la-plata.jpg" class="d-block w-100"
-            alt="cocina a medida diseñada por Jotax Team en La Plata">
-        </div>
-        <div class="carousel-item">
-          <img src="assets/images/living-con-muebles-a-medida.jpg" class="d-block w-100"
-            alt="sala de estar con muebles a medida de Jotax Team en La Plata" loading="lazy">
-        </div>
-        <div class="carousel-item">
-          <img src="assets/images/respaldo-de-cama-a-medida.jpg" class="d-block w-100"
-            alt="respaldo de cama a medida diseñado por Jotax Team en La Plata" loading="lazy">
-        </div>
-      </div>
-    </div>
-    <div class="hero-texto">
-      <p class="eyebrow">Muebles a medida — La Plata</p>
-      <h1>Muebles a medida, diseñados para tu espacio</h1>
-      <p class="desc">Hechos con criterio, medida real y terminación de taller propio.</p>
-      <a class="btn" href="pages/contacto.html">Pedir presupuesto</a>
-    </div>
-  </section>
   <main>
-    <section class="cita">
-      <p class="quote-mark" aria-hidden="true">&#8220;</p>
-      <blockquote>Cuidamos cada detalle como si el mueble fuera para nuestra propia casa.</blockquote>
-      <cite>Joel &amp; Axel — Jotax Team</cite>
+    <section class="hero" aria-labelledby="hero-titulo">
+      <p class="hero-palabra" aria-hidden="true">JOTAX</p>
+      <p class="eyebrow hero-kicker">Muebles a medida · La Plata</p>
+      <div class="hero-imagen">
+        <img src="assets/images/cocina-a-medida-la-plata.jpg" alt="Cocina a medida diseñada por Jotax Team en La Plata">
+      </div>
+      <div class="hero-texto">
+        <h1 id="hero-titulo">Muebles a medida, diseñados para tu espacio.</h1>
+        <a class="link-redondo" href="#proyectos">Explorar proyectos
+          <span class="link-redondo-icono" aria-hidden="true">↓</span></a>
+      </div>
+      <ul class="hero-lista">
+        <li>Cocinas</li>
+        <li>Vestidores</li>
+        <li>Living</li>
+        <li>Mobiliario especial</li>
+      </ul>
     </section>
     <section class="quienes-somos" data-aos="fade-up">
       <div class="quienes-somos-image">
