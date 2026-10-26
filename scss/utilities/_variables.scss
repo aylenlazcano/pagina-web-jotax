@@ -16,6 +16,7 @@ $overlay-medio: #14100E;
 // ===== Tipografías =====
 $font-titulos: 'Schibsted Grotesk', sans-serif;
 $font-texto: 'Archivo', sans-serif;
+$tracking-titulos: -0.04em;   
 
 // ===== Breakpoints =====
 $bp-tablet: 768px;
@@ -33,3 +34,11 @@ $transicion: 0.2s ease;
 $transicion-lenta: 0.3s ease;
 $ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
 $retraso-base: 0.15s;
+
+// ===== Espaciado editorial =====
+$margen-lateral: 5vw;          // aire a los costados en desktop
+$margen-lateral-mobile: 6vw;
+
+// ===== Curvas de animación (del prototipo) =====
+$ease-reveal: cubic-bezier(0.76, 0, 0.24, 1);   // la foto que se descubre
+$ease-suave: cubic-bezier(0.2, 0.7, 0.2, 1);    // zooms y hovers
