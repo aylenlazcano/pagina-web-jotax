@@ -1,67 +1,121 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-.navbar .nav-link {
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-shadow: 0 1px 4px rgba($negro, 0.55);
-}
+// Navbar de Bootstrap con el estilo editorial del prototipo.
+// Los colores se cambian con las variables propias de Bootstrap (--bs-navbar-*).
 
 .navbar {
-  --bs-navbar-color: #{$on-accent};
-  --bs-navbar-hover-color: #{$on-accent-muted};
-  --bs-navbar-active-color: #{$on-accent};
-  --bs-navbar-toggler-border-color: #{$on-accent};
-  --bs-navbar-padding-x: 1.25rem;
-  --bs-navbar-padding-y: 1rem;
+  --bs-navbar-color: #{$ink};
+  --bs-navbar-hover-color: #{$muted};
+  --bs-navbar-active-color: #{$ink};
+  --bs-navbar-brand-color: #{$ink};
+  --bs-navbar-brand-hover-color: #{$ink};
+  --bs-navbar-padding-x: #{$margen-lateral-mobile};
+  --bs-navbar-padding-y: 1.25rem;
+
+  @include desktop {
+    --bs-navbar-padding-x: #{$margen-lateral};
+  }
+
+  .container-fluid {
+    padding: 0;
+  }
+
+  // Logo: "Team" en el index, "Jotax Team" en el resto
+  &-brand.logo {
+    font-family: $font-texto;
+    font-weight: 800;
+    font-size: 0.875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin: 0;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .nav-link {
+    @include etiqueta(0.18em);
+    position: relative;
+    padding: 1rem 0;
+    transition: color $transicion;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    // Línea que crece debajo del link al pasar el mouse
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background-color: currentColor;
+      transition: width $transicion-lenta;
+    }
+
+    &:hover::after,
+    &.active::after {
+      width: 100%;
+    }
+  }
+
+  // Botón hamburguesa redondo
+  &-toggler {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid rgba($ink, 0.3);
+    border-radius: 50%;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($accent, 0.25);
+    }
+  }
+
+  &-toggler-icon {
+    width: 1.1em;
+    height: 1.1em;
+  }
 }
 
-.navbar-brand.logo {
-  font-family: $font-titulos;
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: $on-accent;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
+// Mobile y tablet: menú desplegado con líneas entre links
 @media (max-width: $bp-nav - 0.02px) {
+  
+ // Con el menú abierto, toda la barra toma el fondo claro
+  .navbar:has(.navbar-collapse.show),
+  .navbar:has(.navbar-collapse.collapsing) {
+    background-color: $bg;
+    border-bottom: 1px solid $line;
+  }
+
   .navbar-collapse {
-    background-color: $ink;
-    padding: 0.5rem 1.25rem;
-    margin-top: 0.75rem;
+    margin-top: 1rem;
   }
 
-  body.header-simple .navbar-collapse {
-    --bs-navbar-color: #{$on-accent};
-    --bs-navbar-hover-color: #{$on-accent-muted};
-    --bs-navbar-active-color: #{$on-accent};
+  .navbar .nav-item {
+    border-top: 1px solid $line;
   }
 
+  .navbar .nav-link::after {
+    display: none;
+  }
+
+  .navbar .nav-link.active {
+    color: $accent;
+  }
 }
 
+// Desktop: links en fila con aire entre ellos
 @media (min-width: $bp-nav) {
-  .navbar {
-    --bs-navbar-padding-x: 3rem;
-    --bs-navbar-padding-y: 1.75rem;
+  .navbar-nav {
+    gap: 2.25rem;
+  }
+
+  .navbar .nav-link {
+    padding: 0.25rem 0;
   }
 }
-
-body.header-simple .navbar {
-  --bs-navbar-color: #{$accent};
-  --bs-navbar-hover-color: #{$accent-hover};
-  --bs-navbar-active-color: #{$accent};
-  --bs-navbar-toggler-border-color: #{$accent};
-}
-
-body.header-simple .navbar-brand.logo {
-  color: $accent;
-  text-shadow: none;
-}
-
-body.header-simple .navbar .nav-link {
-  text-shadow: none;
-}
-

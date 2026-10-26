@@ -26,14 +26,14 @@
   }
 }
 
-// Etiquetas chiquitas en mayúscula (footer-titulo, footer-slogan, eyebrow)
-@mixin etiqueta {
+// Etiquetas chiquitas en mayúscula (footer, eyebrow, links del menú)
+// $espaciado: cuánto aire hay entre letras (por defecto 0.08em)
+@mixin etiqueta($espaciado: 0.08em) {
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: $espaciado;
   font-weight: 600;
 }
-
 // Imágenes que llenan su caja sin deformarse
 @mixin img-cover($alto) {
   width: 100%;

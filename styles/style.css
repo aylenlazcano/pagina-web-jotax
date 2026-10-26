@@ -105,66 +105,101 @@ body.header-simple header {
   border-bottom: 1px solid rgba(34, 31, 29, 0.14);
 }
 
-.navbar .nav-link {
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
-}
-
 .navbar {
-  --bs-navbar-color: #F5EFE8;
-  --bs-navbar-hover-color: #D8CFC5;
-  --bs-navbar-active-color: #F5EFE8;
-  --bs-navbar-toggler-border-color: #F5EFE8;
-  --bs-navbar-padding-x: 1.25rem;
-  --bs-navbar-padding-y: 1rem;
+  --bs-navbar-color: #221F1D;
+  --bs-navbar-hover-color: #726860;
+  --bs-navbar-active-color: #221F1D;
+  --bs-navbar-brand-color: #221F1D;
+  --bs-navbar-brand-hover-color: #221F1D;
+  --bs-navbar-padding-x: 6vw;
+  --bs-navbar-padding-y: 1.25rem;
 }
-
+@media (min-width: 1024px) {
+  .navbar {
+    --bs-navbar-padding-x: 5vw;
+  }
+}
+.navbar .container-fluid {
+  padding: 0;
+}
 .navbar-brand.logo {
-  font-family: "Schibsted Grotesk", sans-serif;
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: #F5EFE8;
+  font-family: "Archivo", sans-serif;
+  font-weight: 800;
+  font-size: 0.875rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  margin: 0;
+}
+.navbar-brand.logo:hover {
+  text-decoration: none;
+}
+.navbar .nav-link {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  position: relative;
+  padding: 1rem 0;
+  transition: color 0.2s ease;
+}
+.navbar .nav-link:hover {
+  text-decoration: none;
+}
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+.navbar .nav-link:hover::after, .navbar .nav-link.active::after {
+  width: 100%;
+}
+.navbar-toggler {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(34, 31, 29, 0.3);
+  border-radius: 50%;
+}
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 3px rgba(75, 46, 57, 0.25);
+}
+.navbar-toggler-icon {
+  width: 1.1em;
+  height: 1.1em;
 }
 
 @media (max-width: 991.98px) {
-  .navbar-collapse {
-    background-color: #221F1D;
-    padding: 0.5rem 1.25rem;
-    margin-top: 0.75rem;
+  .navbar:has(.navbar-collapse.show),
+  .navbar:has(.navbar-collapse.collapsing) {
+    background-color: #FAF8F4;
+    border-bottom: 1px solid rgba(34, 31, 29, 0.14);
   }
-  body.header-simple .navbar-collapse {
-    --bs-navbar-color: #F5EFE8;
-    --bs-navbar-hover-color: #D8CFC5;
-    --bs-navbar-active-color: #F5EFE8;
+  .navbar-collapse {
+    margin-top: 1rem;
+  }
+  .navbar .nav-item {
+    border-top: 1px solid rgba(34, 31, 29, 0.14);
+  }
+  .navbar .nav-link::after {
+    display: none;
+  }
+  .navbar .nav-link.active {
+    color: #4B2E39;
   }
 }
 @media (min-width: 992px) {
-  .navbar {
-    --bs-navbar-padding-x: 3rem;
-    --bs-navbar-padding-y: 1.75rem;
+  .navbar-nav {
+    gap: 2.25rem;
+  }
+  .navbar .nav-link {
+    padding: 0.25rem 0;
   }
 }
-body.header-simple .navbar {
-  --bs-navbar-color: #4B2E39;
-  --bs-navbar-hover-color: #63424f;
-  --bs-navbar-active-color: #4B2E39;
-  --bs-navbar-toggler-border-color: #4B2E39;
-}
-
-body.header-simple .navbar-brand.logo {
-  color: #4B2E39;
-  text-shadow: none;
-}
-
-body.header-simple .navbar .nav-link {
-  text-shadow: none;
-}
-
 footer {
   background-color: #221F1D;
   color: #FAF8F4;
