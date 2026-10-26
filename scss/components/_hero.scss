@@ -1,90 +1,174 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-// Hero del index (carousel a pantalla completa con texto encima)
+// Hero del index: palabra gigante + foto que se descubre + texto.
+// Animaciones nativas con @keyframes. Usamos "from" + "both":
+// si la animación no corre, el hero se ve igual.
+
+@keyframes subir-palabra {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+
+@keyframes revelar-foto {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+}
 
 @keyframes alejar-foto {
   from {
-    transform: scale(1.1);
-  }
-
-  to {
-    transform: scale(1);
+    transform: scale(1.15);
   }
 }
 
-@keyframes revelar {
+@keyframes aparecer {
   from {
     opacity: 0;
     transform: translateY(20px);
-    filter: blur(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
   }
 }
 
+// ===== MOBILE (base) =====
 .hero {
   position: relative;
-  height: 85vh;
   overflow: hidden;
-  padding: 0;
+  isolation: isolate;
+  padding: 5.5rem $margen-lateral-mobile 3rem;
 
-  img {
-    @include img-cover(100%);
-    display: block;
-    animation: alejar-foto 2.5s $ease-premium;
+  // JOTAX gigante
+  &-palabra {
+    position: relative;
+    z-index: 3;
+    margin: 0;
+    font-family: $font-titulos;
+    font-weight: 800;
+    font-size: 28vw;
+    margin-left: -0.04em; // compensa el aire propio de la J
+    line-height: 0.78;
+    letter-spacing: -0.07em;
+    color: $ink;
+    mix-blend-mode: multiply;
+    animation: subir-palabra 1.1s $ease-suave 0.2s both;
   }
 
-  .carousel,
-  .carousel-inner,
-  .carousel-item {
-    height: 100%;
+  // Texto vertical a la derecha (solo desktop)
+  &-kicker {
+    display: none;
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba($overlay-oscuro, 0.55) 0%, rgba($overlay-medio, 0.15) 45%, rgba($overlay-oscuro, 0.85) 100%);
+  &-imagen {
+    position: relative;
+    z-index: 2;
+    height: 380px;
+    margin-top: -9vw; // la foto pisa la parte de abajo de JOTAX, como en desktop
+    overflow: hidden;
+    animation: revelar-foto 1.35s $ease-reveal 0.45s both;
+
+    img {
+      @include img-cover(100%);
+      animation: alejar-foto 2.2s $ease-suave 0.4s both;
+    }
   }
 
   &-texto {
-    position: absolute;
-    left: 3rem;
-    right: 3rem;
-    bottom: 3.5rem;
-    z-index: 2;
-
-    .eyebrow,
-    h1,
-    p.desc,
-    .btn {
-      animation: revelar 1.2s $ease-premium both;
-    }
-
-    .eyebrow {
-      color: $on-accent-muted;
-      margin-bottom: 1rem;
-      animation-delay: $retraso-base * 1;
-    }
+    margin-top: 2rem;
+    animation: aparecer 0.8s ease 1.1s both;
 
     h1 {
-      color: $on-accent;
-      animation-delay: $retraso-base * 2;
+      margin: 0 0 1.75rem;
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: $tracking-titulos;
+      color: $ink;
+    }
+  }
+
+  // Lista de muebles: solo en desktop (en mobile repetía info y quedaba cortada)
+  &-lista {
+    display: none;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin: 1.75rem 0 0;
+    padding: 0;
+    list-style: none;
+    color: $muted;
+
+    li {
+      @include etiqueta(0.14em);
+    }
+  }
+
+  // ===== TABLET =====
+  @include tablet {
+    &-imagen {
+      height: 480px;
     }
 
-    p.desc {
-      color: $on-accent;
-      opacity: 0.85;
-      animation-delay: $retraso-base * 3;
+    &-texto {
+      max-width: 480px;
+
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+  }
+
+  // ===== DESKTOP: composición como la referencia =====
+  @include desktop {
+    min-height: max(100svh, 50rem);
+    padding: 7.5rem $margen-lateral 4rem;
+
+    // JOTAX más grande y pegada al menú, apenas saliéndose a la izquierda
+    &-palabra {
+      position: absolute;
+      left: 1vw;
+      top: 4.5rem;
+      margin-left: 0;
+      font-size: clamp(6rem, 22vw, 26rem);
     }
 
-    .btn {
-      animation-delay: $retraso-base * 4;
+    &-kicker {
+      display: block;
+      position: absolute;
+      top: 8rem;
+      right: 2vw;
+      writing-mode: vertical-rl;
+      color: $muted;
+    }
+
+    // La foto arranca a mitad de las letras
+    &-imagen {
+      width: min(66%, 80rem);
+      height: min(63vh, 40rem);
+      min-height: 22rem;
+      margin: 7rem 6vw 0 auto;
+    }
+
+    // El texto va justo debajo de JOTAX
+    &-texto {
+      position: absolute;
+      z-index: 4;
+      left: $margen-lateral;
+      top: calc(4.5rem + min(22vw, 26rem) * 0.82);
+      max-width: 22rem;
+      margin: 0;
+
+      h1 {
+        font-size: clamp(2rem, 2.6vw, 2.75rem);
+      }
+    }
+
+    &-lista {
+      display: flex;
+      position: absolute;
+      right: 6vw;
+      bottom: 2.5rem;
+      gap: 1.75rem;
+      margin: 0;
     }
   }
 }
