@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;800&family=Archivo:wght@400;600;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet">
   <!--bootstrap-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -28,7 +28,7 @@
   <header>
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand logo logo--firma" href="index.html" aria-label="Jotax Team, inicio">Team</a>
+                <span class="navbar-text nav-ubicacion">La Plata, Argentina</span>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
           aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menú">
           <span class="navbar-toggler-icon"></span>
@@ -57,22 +57,29 @@
   </header>
   <main>
     <section class="hero" aria-labelledby="hero-titulo">
-      <p class="hero-palabra" aria-hidden="true">JOTAX</p>
-      <p class="eyebrow hero-kicker">Muebles a medida · La Plata</p>
-      <div class="hero-imagen">
-        <img src="assets/images/cocina-a-medida-la-plata.jpg" alt="Cocina a medida diseñada por Jotax Team en La Plata">
+      <div class="hero-escena">
+        <p class="hero-palabra" aria-label="Jotax Team">
+          <span aria-hidden="true">JOTAX</span><span class="hero-team" aria-hidden="true">team®</span>
+        </p>
+        <div class="hero-imagen">
+          <img src="assets/images/cocina-3.jpg"
+            alt="Cocina con isla de frente acanalado, banquetas verdes y alacena vidriada (foto de referencia)">
+          <p class="hero-palabra hero-palabra--clara" aria-hidden="true">
+            <span>JOTAX</span><span class="hero-team">team®</span>
+          </p>
+          <p class="hero-ref">Foto de referencia · no es obra de Jotax</p>
+        </div>
+        <div class="hero-texto">
+          <p class="hero-meta">Diseño · Fabricación · Instalación</p>
+          <h1 id="hero-titulo">Muebles a medida que se vuelven parte de tu casa.</h1>
+          <p class="hero-bajada">Diseñamos, fabricamos e instalamos muebles a medida, pensados
+            para el espacio exacto donde van.</p>
+          <div class="hero-acciones">
+            <a class="btn" href="pages/contacto.html">Pedir presupuesto <span aria-hidden="true">→</span></a>
+            <a class="hero-link" href="pages/portfolio.html">Ver trabajos</a>
+          </div>
+        </div>
       </div>
-      <div class="hero-texto">
-        <h1 id="hero-titulo">Muebles a medida, diseñados para tu espacio.</h1>
-        <a class="link-redondo" href="#proyectos">Explorar proyectos
-          <span class="link-redondo-icono" aria-hidden="true">↓</span></a>
-      </div>
-      <ul class="hero-lista">
-        <li>Cocinas</li>
-        <li>Vestidores</li>
-        <li>Living</li>
-        <li>Mobiliario especial</li>
-      </ul>
     </section>
     <section class="quienes-somos" data-aos="fade-up">
       <div class="quienes-somos-image">

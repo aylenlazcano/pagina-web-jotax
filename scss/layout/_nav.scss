@@ -40,6 +40,16 @@
     }
   }
 
+  // Ubicación a la izquierda (solo en el index, donde el logo es el hero)
+  .nav-ubicacion {
+    padding: 0;
+    font-family: $font-mono;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $muted;
+  }
+
   .nav-link {
     @include etiqueta(0.18em);
     position: relative;
