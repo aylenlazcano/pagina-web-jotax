@@ -1004,4 +1004,77 @@ article .carousel-item img {
   align-self: flex-start;
 }
 
+.trabajos {
+  display: grid;
+  gap: 2.5rem;
+  padding-block: 5rem;
+  grid-template-areas: "encabezado" "ancho" "alto";
+}
+.trabajos-encabezado {
+  grid-area: encabezado;
+  display: grid;
+  gap: 1.25rem;
+}
+.trabajos-encabezado h2 {
+  margin: 0;
+  font-weight: 600;
+  font-variation-settings: "wdth" 80;
+  font-size: clamp(2.2rem, 9vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  max-width: 16ch;
+}
+.trabajos-etiqueta {
+  margin: 0;
+  font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #C8553D;
+}
+@media (min-width: 1024px) {
+  .trabajos {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas: "encabezado encabezado encabezado encabezado encabezado encabezado . . . . . ." "ancho ancho ancho ancho ancho ancho ancho ancho alto alto alto alto";
+    column-gap: 1.5rem;
+    row-gap: 3.5rem;
+    padding-block: 8rem;
+  }
+}
+
+.trabajo {
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.trabajo img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 4/5;
+  display: block;
+}
+.trabajo figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.trabajo figcaption span:last-child {
+  color: #D8CFC5;
+}
+.trabajo--ancho {
+  grid-area: ancho;
+}
+.trabajo--ancho img {
+  aspect-ratio: 3/2;
+}
+.trabajo--alto {
+  grid-area: alto;
+  align-self: end;
+}
+
 /*# sourceMappingURL=style.css.map */

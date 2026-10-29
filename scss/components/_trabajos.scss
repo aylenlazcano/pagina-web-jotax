@@ -1,0 +1,90 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// Sección oscura de trabajos del index.
+// Mobile: todo en una columna. Desktop: grilla de 12 columnas
+// con una foto ancha y una alta.
+
+.trabajos {
+  display: grid;
+  gap: 2.5rem;
+  padding-block: 5rem;
+  grid-template-areas:
+    "encabezado"
+    "ancho"
+    "alto";
+
+  &-encabezado {
+    grid-area: encabezado;
+    display: grid;
+    gap: 1.25rem;
+
+    h2 {
+      margin: 0;
+      font-weight: 600;
+      font-variation-settings: "wdth" 80;
+      font-size: clamp(2.2rem, 9vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      max-width: 16ch;
+    }
+  }
+
+  &-etiqueta {
+    margin: 0;
+    font-family: $font-mono;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $accent-claro;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas:
+      "encabezado encabezado encabezado encabezado encabezado encabezado . . . . . ."
+      "ancho ancho ancho ancho ancho ancho ancho ancho alto alto alto alto";
+    column-gap: 1.5rem;
+    row-gap: 3.5rem;
+    padding-block: 8rem;
+  }
+}
+
+.trabajo {
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+
+  img {
+    @include img-cover(auto);
+    aspect-ratio: 4 / 5;
+    display: block;
+  }
+
+  figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: $font-mono;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    span:last-child {
+      color: $on-accent-muted;
+    }
+  }
+
+  &--ancho {
+    grid-area: ancho;
+
+    img {
+      aspect-ratio: 3 / 2;
+    }
+  }
+
+  &--alto {
+    grid-area: alto;
+    align-self: end;
+  }
+}
