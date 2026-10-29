@@ -1,12 +1,13 @@
 // ===== Colores =====
-$bg: #FAF8F4;
-$ink: #221F1D;
-$muted: #726860;
-$accent: #4B2E39;
-$accent-hover: #63424f;
-$on-accent: #F5EFE8;
+$bg: #F3EFE8;              
+$ink: #0E0D0B;             
+$muted: #6B5F58;
+$accent: #A9462F;          
+$accent-claro: #C8553D;    
+$accent-hover: #8F3A27;
+$on-accent: #F3EFE8;
 $on-accent-muted: #D8CFC5;
-$line: rgba(34, 31, 29, 0.14);
+$line: rgba(14, 13, 11, 0.16);
 
 // Sombras y overlays (se combinan con rgba() en los componentes)
 $negro: #000;
@@ -14,8 +15,9 @@ $overlay-oscuro: #0F0C0A;
 $overlay-medio: #14100E;
 
 // ===== Tipografías =====
-$font-titulos: 'Schibsted Grotesk', sans-serif;
-$font-texto: 'Archivo', sans-serif;
+$font-titulos: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+$font-texto: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+$font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
 $tracking-titulos: -0.04em;   
 
 // ===== Breakpoints =====
