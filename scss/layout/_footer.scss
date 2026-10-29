@@ -1,9 +1,9 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
+@use "secciones";
 
 footer {
-  background-color: $ink;
-  color: $bg;
+    @extend %seccion-oscura;
   padding: 1.5rem 2rem;
   margin-top: 2rem;
   display: flex;

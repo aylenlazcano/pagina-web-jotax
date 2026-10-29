@@ -1,0 +1,28 @@
+@use "../utilities/variables" as *;
+
+// Fondo oscuro para secciones de fotos y para el footer.
+// Es un placeholder (%): no genera CSS hasta que alguien lo extiende.
+%seccion-oscura {
+  background-color: $ink;
+  color: $on-accent;
+
+  h2,
+  h3 {
+    color: $on-accent;
+  }
+
+  p {
+    color: $on-accent-muted;
+  }
+
+  a {
+    color: $accent-claro;
+  }
+}
+
+.seccion-oscura {
+  @extend %seccion-oscura;
+    figcaption {
+    color: $on-accent-muted;
+  }
+}
