@@ -58,3 +58,16 @@
     color: $bg;
   }
 }
+
+
+// Botón sobre fondo oscuro: claro, y bronce al pasar el mouse
+.seccion-oscura .btn {
+  background-color: $on-accent;
+  color: $ink;
+
+  &:hover,
+  &:active {
+    background-color: $accent-claro;
+    color: $ink;
+  }
+}

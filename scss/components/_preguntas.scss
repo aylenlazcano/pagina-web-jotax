@@ -1,0 +1,35 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// "Lo que más nos preguntan": la foto de al lado cambia según la pregunta abierta.
+// Las 5 fotos están apiladas una encima de la otra y se ve solo la que corresponde.
+// Bootstrap le saca la clase .collapsed al botón de la pregunta abierta,
+// y con :has() la foto "se entera" de cuál es.
+
+$cantidad-preguntas: 5;
+
+.preguntas-foto {
+  img {
+    opacity: 0;
+    transition: opacity 0.45s ease;
+  }
+
+  // de la segunda en adelante van encima de la primera
+  img:not(:first-child) {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+  }
+}
+
+// Sin ninguna pregunta abierta, se ve la primera foto
+.preguntas:not(:has(.accordion-button:not(.collapsed))) .preguntas-img--1 {
+  opacity: 1;
+}
+
+// Un @for de Sass escribe las 5 reglas: pregunta 1 → foto 1, pregunta 2 → foto 2...
+@for $i from 1 through $cantidad-preguntas {
+  .preguntas:has(.accordion-item:nth-child(#{$i}) .accordion-button:not(.collapsed)) .preguntas-img--#{$i} {
+    opacity: 1;
+  }
+}

@@ -2,44 +2,113 @@
 @use "../utilities/mixins" as *;
 @use "secciones";
 
+// Footer oscuro de las 5 páginas: columnas de links, JOTAX gigante y línea legal.
+
 footer {
-    @extend %seccion-oscura;
-  padding: 1.5rem 2rem;
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.5rem;
+  @extend %seccion-oscura;
+}
+
+.pie {
+  display: grid;
+  gap: 2.25rem;
+  padding: 3rem $margen-lateral-mobile 1.75rem;
+  border-top: 1px solid rgba($on-accent, 0.16);
+
+  @include desktop {
+    padding-inline: $margen-lateral;
+  }
 
   ul {
     list-style: none;
-    margin: 0;
+    margin: 0.6rem 0 0;
     padding: 0;
+    display: grid;
+    gap: 0.25rem;
   }
 
   a {
-    color: $bg;
+    color: $on-accent;
+
+    &:hover {
+      color: $on-accent;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
   }
 }
 
+.pie-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
 
-.footer-col {
+  @include tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pie-titulo {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $on-accent-muted;
+}
+
+// JOTAX gigante, con "team®" en cursiva
+.pie-marca {
+  margin: 0;
+  font-family: $font-titulos;
+  font-weight: 600;
+  font-variation-settings: "wdth" 72;
+  font-size: clamp(3.5rem, 18vw, 15rem);
+  line-height: 0.75;
+  letter-spacing: -0.04em;
+  color: $on-accent;
+
+  // la palabra con "team®" arriba a la derecha
+  span {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 0.06em;
+  }
+
+  sup {
+    top: 0;
+    font-style: italic;
+    font-weight: 400;
+    font-variation-settings: "wdth" 100;
+    font-size: max(16px, 0.09em);
+    letter-spacing: 0;
+    color: $accent-claro;
+  }
+}
+
+.pie-legal {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: $on-accent-muted;
 }
 
-.footer-top {
-  @include columna-a-fila(4rem);
+// La palabra se ensancha mientras aparece en pantalla
+@keyframes ensanchar-marca {
+  from {
+    font-variation-settings: "wdth" 72;
+  }
+
+  to {
+    font-variation-settings: "wdth" 100;
+  }
 }
 
-.footer-titulo {
-  @include etiqueta;
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .pie-marca {
+      animation: ensanchar-marca linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+    }
+  }
 }
-
-.footer-slogan {
-  @include etiqueta;
-  align-self: center;
-}
-

@@ -1,24 +1,69 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-// Personalización del accordion de Bootstrap (preguntas frecuentes)
+// Acordeón de Bootstrap con el estilo editorial: sin cajas ni fondos,
+// solo líneas finas entre preguntas y un "+" que se vuelve "−" al abrir.
 
 .accordion {
-  --bs-accordion-bg: #{$bg};
+  --bs-accordion-bg: transparent;
   --bs-accordion-color: #{$ink};
   --bs-accordion-border-color: #{$line};
+  --bs-accordion-border-width: 1px;
   --bs-accordion-border-radius: 0;
   --bs-accordion-inner-border-radius: 0;
   --bs-accordion-btn-color: #{$ink};
-  --bs-accordion-btn-bg: #{$bg};
-  --bs-accordion-active-color: #{$accent};
-  --bs-accordion-active-bg: #{$bg};
-  --bs-accordion-btn-focus-border-color: #{$accent};
-  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem #{rgba($accent, 0.25)};
-  --bs-accordion-btn-padding-y: 1.25rem;
+  --bs-accordion-btn-bg: transparent;
+  --bs-accordion-active-color: #{$ink};
+  --bs-accordion-active-bg: transparent;
+  --bs-accordion-btn-padding-x: 0;
+  --bs-accordion-btn-padding-y: 1.4rem;
+  --bs-accordion-btn-focus-box-shadow: none;
+  --bs-accordion-body-padding-x: 0;
+  --bs-accordion-body-padding-y: 0;
+  border-bottom: 1px solid $line;
+
+  &-item {
+    border-inline: 0;
+  }
 
   &-button {
+    gap: 1rem;
     font-family: $font-titulos;
-    font-weight: 600;
+    font-weight: 400;
+    font-size: clamp(1.2rem, 4.8vw, 1.625rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    box-shadow: none;
+
+    &:focus-visible {
+      outline: 2px solid $accent;
+      outline-offset: 4px;
+    }
+
+    // El "+" dibujado con dos líneas (reemplaza la flechita de Bootstrap)
+    &::after {
+      width: 20px;
+      height: 20px;
+      background-image: linear-gradient(currentColor, currentColor), linear-gradient(currentColor, currentColor);
+      background-position: center;
+      background-size: 100% 1.5px, 1.5px 100%;
+      transform: none;
+      transition: background-size 0.35s $ease-suave;
+    }
+
+    // Abierta: la línea vertical se achica y queda un "−".
+    // Se repite background-image porque Bootstrap pone acá su propia flechita.
+    &:not(.collapsed)::after {
+      background-image: linear-gradient(currentColor, currentColor), linear-gradient(currentColor, currentColor);
+      background-size: 100% 1.5px, 1.5px 0;
+      transform: none;
+    }
+  }
+
+  &-body p {
+    margin: 0;
+    padding: 0 2.5rem 1.6rem 0;
+    max-width: 42rem;
+    color: $muted;
   }
 }

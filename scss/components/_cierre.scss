@@ -1,0 +1,19 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// Bloque oscuro de cierre antes del footer: título, copete y botón.
+
+.cierre {
+  display: grid;
+  gap: 1.4rem;
+  padding-block: 6rem 4.5rem;
+
+  @include desktop {
+    padding-block: 10rem 6rem;
+  }
+
+  .btn {
+    justify-self: start;
+    margin: 0.4rem 0 0;
+  }
+}
