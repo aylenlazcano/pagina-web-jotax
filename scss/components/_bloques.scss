@@ -4,26 +4,6 @@
 // Bloques imagen + texto (Quiénes somos en index, Historia en nosotros)
 // y la lista de "Por qué elegirnos"
 
-.quienes-somos {
-  @include columna-a-fila(2rem);
-
-  @include desktop {
-    align-items: center;
-  }
-
-  &-image {
-    flex: 0 0 40%;
-
-    img {
-      @include img-cover(400px);
-    }
-  }
-
-  &-texto {
-    flex: 1;
-    padding: 1.25rem;
-  }
-}
 
 .historia {
   @include columna-a-fila(3rem);

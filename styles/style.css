@@ -906,34 +906,6 @@ article .carousel-item img {
   vertical-align: middle;
 }
 
-.quienes-somos {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-@media (min-width: 1024px) {
-  .quienes-somos {
-    flex-direction: row;
-  }
-}
-@media (min-width: 1024px) {
-  .quienes-somos {
-    align-items: center;
-  }
-}
-.quienes-somos-image {
-  flex: 0 0 40%;
-}
-.quienes-somos-image img {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-}
-.quienes-somos-texto {
-  flex: 1;
-  padding: 1.25rem;
-}
-
 .historia {
   display: flex;
   flex-direction: column;
@@ -1160,6 +1132,197 @@ article .carousel-item img {
 .trabajo--alto {
   grid-area: alto;
   align-self: end;
+}
+
+.seccion {
+  padding-block: 5.5rem;
+  border-top: 1px solid rgba(34, 32, 29, 0.16);
+}
+@media (min-width: 1024px) {
+  .seccion {
+    padding-block: 10rem;
+  }
+}
+
+.titulo-display {
+  margin: 0;
+  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.125rem, 6.4vw, 4.875rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  max-width: 18ch;
+}
+
+.copete {
+  margin: 0;
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.5;
+  color: #55514B;
+  max-width: 34rem;
+}
+
+.texto-editorial {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+.texto-editorial p {
+  margin: 0;
+  max-width: 36rem;
+  color: #55514B;
+}
+
+.link-linea {
+  display: inline-block;
+  padding: 0.75rem 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #22201D;
+  background: linear-gradient(currentColor, currentColor) 0 100%/100% 1px no-repeat;
+  transition: background-size 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.link-linea:hover {
+  color: #22201D;
+  text-decoration: none;
+  background-size: 40% 1px;
+}
+
+.figura {
+  margin: 0;
+  display: grid;
+  gap: 0.625rem;
+}
+.figura-imagen {
+  position: relative;
+  overflow: clip;
+  background-color: #CCC9C2;
+}
+.figura-imagen img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.figura:hover .figura-imagen img {
+  transform: scale(1.035);
+}
+.figura figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.125rem 0.75rem;
+  font-size: 0.85rem;
+}
+.figura figcaption span:last-child {
+  font-size: 0.8rem;
+  color: #55514B;
+}
+
+.split {
+  display: grid;
+  gap: 1.75rem;
+}
+.split > * {
+  min-width: 0;
+}
+@media (min-width: 1024px) {
+  .split {
+    grid-template-columns: 4fr 1fr 7fr;
+    gap: 2.5rem;
+  }
+  .split > * {
+    grid-column: 3;
+  }
+  .split > .titulo-display,
+  .split > .split-ancho {
+    grid-column: 1/-1;
+  }
+  .split > .split-lateral {
+    grid-column: 1;
+    grid-row: span 3;
+    align-self: start;
+  }
+}
+
+.split-lateral .figura-imagen img {
+  aspect-ratio: 4/5;
+}
+
+.cota {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 16%;
+  z-index: 2;
+  height: 24px;
+  color: #E4E1DA;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+  view-timeline-name: --cota;
+}
+.cota::before, .cota::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  width: 1.5px;
+  height: 20px;
+  background-color: currentColor;
+}
+.cota::before {
+  left: 0;
+}
+.cota::after {
+  right: 0;
+}
+
+.cota-linea {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 11px;
+  height: 1.5px;
+  background-color: currentColor;
+  transform-origin: left;
+}
+
+.cota-numero {
+  position: absolute;
+  left: 50%;
+  top: -22px;
+  transform: translateX(-50%);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@keyframes dibujar-cota {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes aparecer-suave {
+  from {
+    opacity: 0;
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .cota-linea {
+      animation: dibujar-cota linear both;
+      animation-timeline: --cota;
+      animation-range: entry 100% cover 55%;
+    }
+    .cota::after,
+    .cota-numero {
+      animation: aparecer-suave linear both;
+      animation-timeline: --cota;
+      animation-range: cover 50% cover 58%;
+    }
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

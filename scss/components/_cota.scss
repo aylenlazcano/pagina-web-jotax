@@ -1,0 +1,88 @@
+@use "../utilities/variables" as *;
+
+// Cota de plano sobre la foto de "Primero vamos a tu casa":
+// una línea con dos topes que se dibuja al scrollear y mide la pared.
+
+.cota {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 16%;
+  z-index: 2;
+  height: 24px;
+  color: $on-accent;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 2px rgba($negro, 0.45));
+  view-timeline-name: --cota;
+
+  // los dos topes verticales de la cota
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    width: 1.5px;
+    height: 20px;
+    background-color: currentColor;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+}
+
+.cota-linea {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 11px;
+  height: 1.5px;
+  background-color: currentColor;
+  transform-origin: left;
+}
+
+.cota-numero {
+  position: absolute;
+  left: 50%;
+  top: -22px;
+  transform: translateX(-50%);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@keyframes dibujar-cota {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes aparecer-suave {
+  from {
+    opacity: 0;
+  }
+}
+
+// Solo si el navegador sabe animar con el scroll y la persona no pidió menos movimiento.
+// Si no, la cota se ve completa y quieta.
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .cota-linea {
+      animation: dibujar-cota linear both;
+      animation-timeline: --cota;
+      animation-range: entry 100% cover 55%;
+    }
+
+    .cota::after,
+    .cota-numero {
+      animation: aparecer-suave linear both;
+      animation-timeline: --cota;
+      animation-range: cover 50% cover 58%;
+    }
+  }
+}

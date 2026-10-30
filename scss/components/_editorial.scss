@@ -1,0 +1,145 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// Piezas editoriales que se repiten en todo el sitio:
+// sección con aire, título grande, copete, texto, link con línea,
+// foto con epígrafe y la grilla "split".
+
+// ----- Sección con aire y una línea fina arriba -----
+.seccion {
+  padding-block: 5.5rem;
+  border-top: 1px solid $line;
+
+  @include desktop {
+    padding-block: 10rem;
+  }
+}
+
+// ----- Título grande de sección -----
+.titulo-display {
+  margin: 0;
+  font-family: $font-titulos;
+  font-weight: 400;
+  font-size: clamp(2.125rem, 6.4vw, 4.875rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  max-width: 18ch;
+}
+
+// ----- Copete: la bajada que acompaña al título -----
+.copete {
+  margin: 0;
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.5;
+  color: $muted;
+  max-width: 34rem;
+}
+
+// ----- Bloque de párrafos -----
+.texto-editorial {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+
+  p {
+    margin: 0;
+    max-width: 36rem;
+    color: $muted;
+  }
+}
+
+// ----- Link con línea abajo que se achica al pasar el mouse -----
+.link-linea {
+  display: inline-block;
+  padding: 0.75rem 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: $ink;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+  transition: background-size 0.35s $ease-suave;
+
+  &:hover {
+    color: $ink;
+    text-decoration: none;
+    background-size: 40% 1px;
+  }
+}
+
+// ----- Foto con epígrafe -----
+.figura {
+  margin: 0;
+  display: grid;
+  gap: 0.625rem;
+
+  &-imagen {
+    position: relative;
+    // "clip" y no "hidden": hidden la convierte en un contenedor con scroll propio
+    // y las animaciones ligadas al scroll de adentro (la cota) quedan congeladas
+    overflow: clip;
+    background-color: $superficie;
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      transition: transform 0.9s $ease-suave;
+    }
+  }
+
+  // la foto se acerca apenas al pasar el mouse
+  &:hover &-imagen img {
+    transform: scale(1.035);
+  }
+
+  figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.125rem 0.75rem;
+    font-size: 0.85rem;
+
+    span:last-child {
+      font-size: 0.8rem;
+      color: $muted;
+    }
+  }
+}
+
+// ----- Grilla "split" -----
+// Mobile: todo en una columna.
+// Desktop: título a todo el ancho; foto a la izquierda y texto a la derecha.
+.split {
+  display: grid;
+  gap: 1.75rem;
+
+  > * {
+    min-width: 0; // evita que una foto ancha rompa la grilla
+  }
+
+  @include desktop {
+    grid-template-columns: 4fr 1fr 7fr;
+    gap: 2.5rem;
+
+    > * {
+      grid-column: 3;
+    }
+
+    > .titulo-display,
+    > .split-ancho {
+      grid-column: 1 / -1;
+    }
+
+    > .split-lateral {
+      grid-column: 1;
+      grid-row: span 3;
+      align-self: start;
+    }
+  }
+}
+
+// La foto lateral es vertical
+.split-lateral .figura-imagen img {
+  aspect-ratio: 4 / 5;
+}
