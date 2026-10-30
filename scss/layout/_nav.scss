@@ -1,17 +1,19 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-// Navbar de Bootstrap con el estilo editorial del prototipo.
-// Los colores se cambian con las variables propias de Bootstrap (--bs-navbar-*).
+// Navbar de Bootstrap con el estilo del diseño final.
+// Mobile y tablet: botón "Menú" en píldora que abre un menú oscuro a pantalla completa.
+// Desde 992px: links en fila, con una línea que crece abajo al pasar el mouse.
 
 .navbar {
   --bs-navbar-color: #{$ink};
-  --bs-navbar-hover-color: #{$muted};
+  --bs-navbar-hover-color: #{$ink};
   --bs-navbar-active-color: #{$ink};
   --bs-navbar-brand-color: #{$ink};
   --bs-navbar-brand-hover-color: #{$ink};
   --bs-navbar-padding-x: #{$margen-lateral-mobile};
-  --bs-navbar-padding-y: 1.25rem;
+  --bs-navbar-padding-y: 1rem;
+  --bs-navbar-nav-link-padding-x: 0;
 
   @include desktop {
     --bs-navbar-padding-x: #{$margen-lateral};
@@ -21,18 +23,28 @@
     padding: 0;
   }
 
-  // Logo: "Team" en el index, "Jotax Team" en el resto
+  // Logo: JOTAX con "team®" chico en cursiva arriba
   &-brand.logo {
-    font-family: $font-texto;
-    font-weight: 800;
-    font-size: 0.875rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 4px;
     margin: 0;
+    padding: 0;
+    font-family: $font-titulos;
+    font-weight: 700;
+    font-variation-settings: "wdth" 75;
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+    line-height: 1;
 
-    &.logo--firma {
-      @include etiqueta(0.18em);
+    sup {
+      top: 0;
+      font-style: italic;
       font-weight: 400;
+      font-variation-settings: "wdth" 100;
+      font-size: 0.8rem;
+      letter-spacing: 0;
+      color: $accent;
     }
 
     &:hover {
@@ -43,17 +55,14 @@
   // Ubicación a la izquierda (solo en el index, donde el logo es el hero)
   .nav-ubicacion {
     padding: 0;
-    font-family: $font-texto;
-    font-size: 0.8rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: $muted;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: $ink;
   }
 
   .nav-link {
     @include etiqueta;
     position: relative;
-    padding: 1rem 0;
     transition: color $transicion;
 
     &:hover {
@@ -78,56 +87,156 @@
     }
   }
 
-  // Botón hamburguesa redondo
+  // Botón "Menú" / "Cerrar" en forma de píldora
   &-toggler {
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    border: 1px solid rgba($ink, 0.3);
-    border-radius: 50%;
+    position: relative;
+    z-index: 1050; // queda por encima del menú abierto
+    min-height: 44px;
+    padding: 0 1.1rem;
+    border: 1px solid currentColor;
+    border-radius: $radio-pildora;
+    color: $ink;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color $transicion;
 
     &:focus {
-      box-shadow: 0 0 0 3px rgba($accent, 0.25);
+      box-shadow: none;
     }
-  }
 
-  &-toggler-icon {
-    width: 1.1em;
-    height: 1.1em;
+    &:focus-visible {
+      outline: 2px solid $accent;
+      outline-offset: 3px;
+    }
+
+    // Por defecto dice "Menú"; con el menú abierto dice "Cerrar"
+    .menu-cerrar {
+      display: none;
+    }
+
+    &[aria-expanded="true"] {
+      color: $on-accent;
+
+      .menu-abrir {
+        display: none;
+      }
+
+      .menu-cerrar {
+        display: inline;
+      }
+    }
   }
 }
 
-// Mobile y tablet: menú desplegado con líneas entre links
+// Los links entran de abajo hacia arriba, uno atrás del otro
+@keyframes entrar-link {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+// ===== MOBILE Y TABLET (hasta 991px): menú a pantalla completa =====
 @media (max-width: #{$bp-nav - 0.02px}) {
 
-  // Con el menú abierto, toda la barra toma el fondo claro
-  .navbar:has(.navbar-collapse.show),
-  .navbar:has(.navbar-collapse.collapsing) {
-    background-color: $bg;
-    border-bottom: 1px solid $line;
+  .navbar-collapse {
+    position: fixed;
+    inset: 0;
+    z-index: 1040;
+    padding: 6rem $margen-lateral-mobile 2.5rem;
+    background-color: $oscuro-bg;
+    overflow-y: auto;
   }
 
-  .navbar-collapse {
-    margin-top: 1rem;
+  // Abierto: los links se apilan abajo de todo
+  .navbar-collapse.show,
+  .navbar-collapse.collapsing {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  // Bootstrap anima la ALTURA al abrir. Como este menú ocupa toda la pantalla,
+  // apagamos esa animación y usamos la de los links (entrar-link).
+  .navbar-collapse.collapsing {
+    height: auto !important;
+    transition: none;
+  }
+
+  .navbar-nav {
+    width: 100%; // anula el ms-auto de Bootstrap: los links ocupan todo el ancho
+    border-bottom: 1px solid rgba($on-accent, 0.16);
   }
 
   .navbar .nav-item {
-    border-top: 1px solid $line;
+    border-top: 1px solid rgba($on-accent, 0.16);
   }
 
-  .navbar .nav-link::after {
-    display: none;
+  .navbar-collapse.show .nav-item {
+    animation: entrar-link 0.5s $ease-suave both;
+
+    &:nth-child(2) { animation-delay: 0.04s; }
+    &:nth-child(3) { animation-delay: 0.08s; }
+    &:nth-child(4) { animation-delay: 0.12s; }
+    &:nth-child(5) { animation-delay: 0.16s; }
   }
 
-  .navbar .nav-link.active {
-    color: $accent;
+  .navbar .nav-link {
+    padding: 0.75rem 0;
+    font-family: $font-titulos;
+    font-size: clamp(2.25rem, 11vw, 3rem);
+    font-weight: 600;
+    font-variation-settings: "wdth" 75;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: $on-accent;
+    // gesto propio del sitio: la letra se ensancha al pasar el dedo o el mouse
+    transition: font-variation-settings 0.4s $ease-suave, color $transicion;
+
+    &::after {
+      display: none;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: $on-accent;
+      font-variation-settings: "wdth" 110;
+    }
+
+    &.active {
+      color: $accent-claro;
+    }
+  }
+
+  // El logo y la ubicación quedan visibles arriba del menú, en claro
+  .navbar-brand,
+  .nav-ubicacion {
+    position: relative;
+    z-index: 1050;
+    transition: color $transicion;
+  }
+
+  .navbar:has(.navbar-collapse.show) {
+    .navbar-brand,
+    .nav-ubicacion {
+      color: $on-accent;
+    }
+
+    .navbar-brand sup {
+      color: $accent-claro;
+    }
+  }
+
+  // Con el menú abierto, la página de atrás no scrollea
+  body:has(.navbar-collapse.show) {
+    overflow: hidden;
   }
 }
 
-// Desktop: links en fila con aire entre ellos
+// ===== DESKTOP (desde 992px): links en fila =====
 @media (min-width: $bp-nav) {
   .navbar-nav {
-    gap: 2.25rem;
+    gap: 2rem;
   }
 
   .navbar .nav-link {
