@@ -70,6 +70,7 @@
 .figura {
   margin: 0;
   display: grid;
+  align-content: start; 
   gap: 0.625rem;
 
   &-imagen {
@@ -142,4 +143,21 @@
 // La foto lateral es vertical
 .split-lateral .figura-imagen img {
   aspect-ratio: 4 / 5;
+}
+
+
+// ----- Ajustes dentro de secciones oscuras -----
+.seccion-oscura {
+  .link-linea,
+  .link-linea:hover {
+    color: $on-accent;
+  }
+
+  .figura figcaption {
+    color: $on-accent;
+
+    span:last-child {
+      color: $on-accent-muted;
+    }
+  }
 }

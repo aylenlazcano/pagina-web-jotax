@@ -1,90 +1,168 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-// Sección oscura de trabajos del index.
-// Mobile: todo en una columna. Desktop: grilla de 12 columnas
-// con una foto ancha y una alta.
+// Sección oscura "Trabajos" del inicio.
+// Mobile: carrusel que se desliza con el dedo.
+// Tablet: grilla con grid-template-areas (foto ancha + alta, y una panorámica abajo).
+// Desktop: la sección se queda fija y las fotos pasan de derecha a izquierda al scrollear.
 
 .trabajos {
   display: grid;
-  gap: 2.5rem;
-  padding-block: 5rem;
+  gap: 2.25rem;
+  padding-block: 5.5rem;
   grid-template-areas:
     "encabezado"
-    "ancho"
-    "alto";
+    "carril"
+    "mas";
+}
 
-  &-encabezado {
-    grid-area: encabezado;
-    display: grid;
-    gap: 1.25rem;
+// Los dos envoltorios solo se usan en desktop. Antes, "display: contents" hace
+// como si no existieran y sus hijos quedan directo en la grilla.
+.trabajos-pin,
+.trabajos-tira {
+  display: contents;
+}
 
-    h2 {
-      margin: 0;
-      font-weight: 600;
-      font-variation-settings: "wdth" 80;
-      font-size: clamp(2.2rem, 9vw, 5rem);
-      line-height: 0.98;
-      letter-spacing: -0.03em;
-      max-width: 16ch;
-    }
+.trabajos-encabezado {
+  grid-area: encabezado;
+  display: grid;
+  gap: 1rem;
+}
+
+.trabajos-mas {
+  grid-area: mas;
+  justify-self: start;
+}
+
+// ----- MOBILE: carrusel -----
+.trabajos-carril {
+  grid-area: carril;
+  display: flex;
+  gap: 0.875rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  // el carril llega hasta los bordes de la pantalla
+  margin-inline: calc(#{$margen-lateral-mobile} * -1);
+  padding-inline: $margen-lateral-mobile;
+  scroll-padding-inline: $margen-lateral-mobile;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 
-  &-etiqueta {
-    margin: 0;
-    font-family: $font-texto;
-    font-size: 0.8rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: $accent-claro;
+  .trabajo {
+    flex: 0 0 84%;
+    scroll-snap-align: start;
   }
 
-  @include desktop {
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-areas:
-      "encabezado encabezado encabezado encabezado encabezado encabezado . . . . . ."
-      "ancho ancho ancho ancho ancho ancho ancho ancho alto alto alto alto";
-    column-gap: 1.5rem;
-    row-gap: 3.5rem;
-    padding-block: 8rem;
+  .figura-imagen img {
+    aspect-ratio: 4 / 5;
   }
 }
 
-.trabajo {
-  margin: 0;
-  display: grid;
-  gap: 0.75rem;
-
-  img {
-    @include img-cover(auto);
-    aspect-ratio: 4 / 5;
-    display: block;
+// ----- TABLET (y desktop sin animación): grilla de 12 columnas -----
+@include tablet {
+  .trabajos {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 1.5rem;
+    row-gap: 3rem;
+    grid-template-areas:
+      "encabezado encabezado encabezado encabezado encabezado encabezado encabezado encabezado . . . ."
+      "a a a a a a a a b b b b"
+      "c c c c c c c c c c c c"
+      "mas mas mas mas mas mas mas mas mas mas mas mas";
   }
 
-  figcaption {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    font-family: $font-texto;
-    font-size: 0.8rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+  .trabajos-carril {
+    display: contents;
+  }
 
-    span:last-child {
-      color: $on-accent-muted;
+  .trabajo--a { grid-area: a; }
+  .trabajo--b { grid-area: b; align-self: end; }
+  .trabajo--c { grid-area: c; }
+
+  .trabajos-carril .trabajo--a .figura-imagen img { aspect-ratio: 3 / 2; }
+  .trabajos-carril .trabajo--b .figura-imagen img { aspect-ratio: 3 / 4; }
+  .trabajos-carril .trabajo--c .figura-imagen img { aspect-ratio: 21 / 9; }
+}
+
+@include desktop {
+  .trabajos {
+    padding-block: 10rem;
+  }
+}
+
+// ----- DESKTOP: recorrido horizontal ligado al scroll -----
+@keyframes recorrer-trabajos {
+  to {
+    // corre la tira hacia la izquierda todo su ancho, menos lo que entra en pantalla
+    transform: translateX(calc(-100% + 100vw));
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @include desktop {
+      .trabajos {
+        display: block;
+        height: 300vh; // cuánto hay que scrollear para recorrer toda la tira
+        padding: 0;
+        view-timeline-name: --trabajos;
+      }
+
+      .trabajos-pin {
+        display: block;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: clip;
+      }
+
+      .trabajos-tira {
+        display: flex;
+        align-items: flex-end;
+        gap: 2.5rem;
+        width: max-content;
+        height: 100%;
+        padding: 8rem $margen-lateral 4.5rem;
+        animation: recorrer-trabajos linear both;
+        animation-timeline: --trabajos;
+        animation-range: contain 0% contain 100%;
+      }
+
+      .trabajos-encabezado {
+        flex: 0 0 30vw;
+        align-self: center;
+      }
+
+      .trabajos-carril {
+        display: flex;
+        align-items: flex-end;
+        gap: 2.5rem;
+      }
+
+      .trabajos-carril .trabajo {
+        flex: none; // anula el 84% del carrusel de mobile
+        width: 46vw;
+      }
+
+      .trabajos-carril .trabajo--b {
+        width: 28vw;
+      }
+
+      .trabajos-carril .figura-imagen img {
+        max-height: calc(100vh - 16rem);
+      }
+
+      .trabajos-carril .trabajo--c .figura-imagen img {
+        aspect-ratio: 3 / 2;
+      }
+
+      .trabajos-mas {
+        align-self: center;
+        white-space: nowrap;
+      }
     }
-  }
-
-  &--ancho {
-    grid-area: ancho;
-
-    img {
-      aspect-ratio: 3 / 2;
-    }
-  }
-
-  &--alto {
-    grid-area: alto;
-    align-self: end;
   }
 }
