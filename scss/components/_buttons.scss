@@ -5,22 +5,23 @@
   display: inline-block;
   background-color: $accent;
   color: $on-accent;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0;
+  padding: 0.85rem 1.75rem;
+  border-radius: $radio-pildora;
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.875rem;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 600;
   margin-bottom: 1.5rem;
-  transition: background-color $transicion, color $transicion;
+  transition: background-color $transicion, color $transicion, box-shadow $transicion;
 
   &:hover {
     background-color: $accent-hover;
     color: $on-accent;
     text-decoration: none;
+  }
+
+  &:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px $on-accent-muted;
+    box-shadow: 0 0 0 3px rgba($accent, 0.35);
   }
 
   &:active {
