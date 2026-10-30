@@ -101,7 +101,7 @@
 }
 
 .hero-team {
-  font-family: $font-mono;
+  font-family: $font-texto;
   font-weight: 500;
   font-size: max(13px, 0.065em);
   letter-spacing: 0.02em;
@@ -156,7 +156,7 @@
   bottom: 0.75rem;
   margin: 0;
   padding: 0.25rem 0.5rem;
-  font-family: $font-mono;
+  font-family: $font-texto;
   font-size: 0.72rem;
   line-height: 1.4;
   color: $on-accent;
@@ -184,7 +184,7 @@
 .hero-meta {
   display: none;
   margin: 0;
-  font-family: $font-mono;
+  font-family: $font-texto;
   font-size: 0.8rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -210,7 +210,7 @@
 }
 
 .hero-link {
-  font-family: $font-mono;
+  font-family: $font-texto;
   font-size: 0.85rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;

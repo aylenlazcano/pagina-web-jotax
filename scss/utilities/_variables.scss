@@ -1,23 +1,27 @@
-// ===== Colores =====
-$bg: #F3EFE8;              
-$ink: #0E0D0B;             
-$muted: #6B5F58;
-$accent: #A9462F;          
-$accent-claro: #C8553D;    
-$accent-hover: #8F3A27;
-$on-accent: #F3EFE8;
-$on-accent-muted: #D8CFC5;
-$line: rgba(14, 13, 11, 0.16);
+// ===== Colores: paleta "Piedra" =====
+// Claras
+$bg: #D9D7D1;              // gris piedra (fondo)
+$superficie: #CCC9C2;      // tarjetas y bloques
+$ink: #22201D;             // texto
+$muted: #55514B;           // texto secundario
+$accent: #5E3F2A;          // nogal
+$accent-hover: #4A3121;    // nogal más oscuro
+$line: rgba(34, 32, 29, 0.16);
 
-// Sombras y overlays (se combinan con rgba() en los componentes)
+// Secciones oscuras
+$oscuro-bg: #22201D;
+$on-accent: #E4E1DA;       // texto sobre oscuro / sobre acento
+$on-accent-muted: #ABA59B; // secundario sobre oscuro
+$accent-claro: #C9A27A;    // bronce (acento en oscuro)
+
+// Sombras y overlays
 $negro: #000;
-$overlay-oscuro: #0F0C0A;
-$overlay-medio: #14100E;
+$overlay-oscuro: #1A1816;
+$overlay-medio: #22201D;
 
 // ===== Tipografías =====
 $font-titulos: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
 $font-texto: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
-$font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
 $tracking-titulos: -0.04em;   
 
 // ===== Breakpoints =====
@@ -29,6 +33,7 @@ $bp-desktop: 1024px;
 // ===== Medidas =====
 $ancho-max: 1300px;
 $radio-borde: 4px;
+$radio-pildora: 999px;     
 $gap-galeria: 1.5rem;
 
 // ===== Transiciones =====

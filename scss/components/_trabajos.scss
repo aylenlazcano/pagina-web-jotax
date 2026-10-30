@@ -32,7 +32,7 @@
 
   &-etiqueta {
     margin: 0;
-    font-family: $font-mono;
+    font-family: $font-texto;
     font-size: 0.8rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -65,7 +65,7 @@
     display: flex;
     justify-content: space-between;
     gap: 1rem;
-    font-family: $font-mono;
+    font-family: $font-texto;
     font-size: 0.8rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
