@@ -31,7 +31,7 @@
 
 // Link con círculo y flecha (estilo editorial del prototipo)
 .link-redondo {
-  @include etiqueta(0.16em);
+  @include etiqueta;
   display: inline-flex;
   align-items: center;
   gap: 1rem;

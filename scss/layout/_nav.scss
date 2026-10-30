@@ -51,7 +51,7 @@
   }
 
   .nav-link {
-    @include etiqueta(0.18em);
+    @include etiqueta;
     position: relative;
     padding: 1rem 0;
     transition: color $transicion;
@@ -98,7 +98,7 @@
 }
 
 // Mobile y tablet: menú desplegado con líneas entre links
-@media (max-width: $bp-nav - 0.02px) {
+@media (max-width: #{$bp-nav - 0.02px}) {
 
   // Con el menú abierto, toda la barra toma el fondo claro
   .navbar:has(.navbar-collapse.show),
