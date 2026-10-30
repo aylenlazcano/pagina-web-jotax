@@ -46,3 +46,11 @@
   color: $muted;
   margin-top: 0.5rem;
 }
+
+// Fondo rayado para lugares donde todavía falta una foto
+// $color: color de fondo · $angulo: inclinación de las rayas
+@mixin rayado($color, $angulo: 135deg) {
+  background:
+    repeating-linear-gradient($angulo, rgba($negro, 0.05) 0 12px, transparent 12px 24px),
+    $color;
+}

@@ -1,0 +1,49 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// Banda gigante con los rubros y fotitos en forma de píldora entre palabra y palabra.
+// Al scrollear, la banda se corre hacia la izquierda.
+
+.banda {
+  overflow: clip;
+  padding-block: 3.5rem;
+  border-top: 1px solid $line;
+}
+
+.banda-tira {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  width: max-content;
+  padding-inline: $margen-lateral-mobile;
+  font-family: $font-titulos;
+  font-weight: 300;
+  font-variation-settings: "wdth" 75;
+  font-size: clamp(4rem, 13vw, 12.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+
+  img {
+    width: 0.9em;
+    height: 0.62em;
+    object-fit: cover;
+    border-radius: $radio-pildora;
+  }
+}
+
+@keyframes correr-banda {
+  to {
+    transform: translateX(calc(-100% + 100vw));
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .banda-tira {
+      animation: correr-banda linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}

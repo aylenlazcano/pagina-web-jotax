@@ -1,0 +1,143 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// Comparador "Antes y después".
+// La foto del antes va encima de la del después y se recorta hasta la línea.
+// La posición de la línea es una variable (--pos): al scrollear, la animación la mueve
+// de derecha a izquierda y va descubriendo el después.
+
+// Registrar --pos como porcentaje permite animarla (una variable común salta de golpe)
+@property --pos {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 50%;
+}
+
+.comparador {
+  --pos: 50%;
+  margin: 0;
+  display: grid;
+  gap: 0.625rem;
+
+  figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.125rem 0.75rem;
+    font-size: 0.85rem;
+
+    span:last-child {
+      font-size: 0.8rem;
+      color: $muted;
+    }
+  }
+}
+
+.comparador-escena {
+  position: relative;
+  overflow: clip;
+}
+
+.comparador-foto {
+  aspect-ratio: 3 / 2;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.4;
+
+  @include desktop {
+    aspect-ratio: 21 / 9;
+  }
+
+  // cuando lleguen las fotos reales, van acá adentro
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.comparador-despues {
+  @include rayado(#B9A58C);
+  color: #2B241D;
+}
+
+.comparador-antes {
+  @include rayado(#BDBAB3, 45deg);
+  position: absolute;
+  inset: 0;
+  color: #3A3732;
+  // se ve solo lo que queda a la izquierda de la línea
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+
+.comparador-linea {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  z-index: 2;
+  width: 2px;
+  margin-left: -1px;
+  background-color: #fff;
+  box-shadow: 0 0 12px rgba($negro, 0.25);
+
+  // la manija redonda en el medio
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: $ink;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    box-shadow: 0 4px 16px rgba($negro, 0.25);
+    transform: translate(-50%, -50%);
+  }
+}
+
+.comparador-etiqueta {
+  position: absolute;
+  top: 0.75rem;
+  z-index: 2;
+  padding: 0.3rem 0.75rem;
+  border-radius: $radio-pildora;
+  background-color: rgba($negro, 0.55);
+  color: #fff;
+  font-size: 0.8rem;
+
+  &--izq {
+    left: 0.75rem;
+  }
+
+  &--der {
+    right: 0.75rem;
+  }
+}
+
+// ----- La línea se mueve sola al scrollear -----
+@keyframes barrer-comparador {
+  from {
+    --pos: 88%;
+  }
+
+  to {
+    --pos: 12%;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .comparador {
+      animation: barrer-comparador linear both;
+      animation-timeline: view();
+      animation-range: cover 20% cover 70%;
+    }
+  }
+}
