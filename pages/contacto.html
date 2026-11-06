@@ -56,33 +56,71 @@
     </nav>
   </header>
   <main>
-    <section>
-      <h1>Contanos tu proyecto</h1>
-      <p>¿Tenés un mueble en mente? Completá el formulario y te contactamos para coordinar una visita y armar tu
-        presupuesto de muebles a medida.</p>
-      <a class="btn" href="https://wa.me/54911XXXXXXXX" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
-      <div class="contacto-layout" data-aos="fade-up">
-        <figure class="contacto-imagen">
-          <img src="../assets/images/carpinteros-revisando-planos.jpg"
-            alt="Carpinteros revisando juntos los planos de un mueble sobre una mesa de trabajo">
-          <figcaption>Contáctanos para tu proyecto de muebles a medida</figcaption>
-        </figure>
-        <form class="contacto-form" action="#" method="post">
-          <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" name="nombre" required>
+    <section class="encabezado-pagina split" aria-labelledby="pagina-titulo">
+      <h1 class="titulo-display" id="pagina-titulo">Pedí tu presupuesto.</h1>
+      <p class="copete">Contanos qué necesitás y coordinamos una visita para medir. Si tenés medidas o una foto del lugar, mejor. Trabajamos en La Plata y alrededores.</p>
+    </section>
 
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
+    <section class="contacto-layout" aria-label="Formulario de contacto">
+      <form class="contacto-form" name="contacto" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contacto">
 
-          <label for="mueble">Tipo de mueble:</label>
-          <input type="text" id="mueble" name="mueble" required>
+        <div class="campo">
+          <label for="nombre">Tu nombre</label>
+          <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+          <span class="campo-error">Escribí tu nombre para saber a quién responder.</span>
+        </div>
 
-          <label for="mensaje">Contanos tu proyecto:</label>
-          <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+        <div class="campo">
+          <label for="contacto">WhatsApp o email</label>
+          <input type="text" id="contacto" name="contacto" autocomplete="email" required>
+          <span class="campo-error">Necesitamos un dato para responderte.</span>
+        </div>
 
-          <button type="submit" class="btn">Enviar mensaje</button>
-        </form>
-      </div>
+        <div class="campo">
+          <label for="zona">Barrio o localidad</label>
+          <input type="text" id="zona" name="zona" placeholder="Ej: City Bell">
+        </div>
+
+        <fieldset class="campo">
+          <legend>Qué necesitás</legend>
+          <div class="opciones">
+            <label class="opcion"><input type="checkbox" name="mueble" value="Cocina"><span>Cocina</span></label>
+            <label class="opcion"><input type="checkbox" name="mueble" value="Placard o vestidor"><span>Placard o vestidor</span></label>
+            <label class="opcion"><input type="checkbox" name="mueble" value="Biblioteca o rack"><span>Biblioteca o rack</span></label>
+            <label class="opcion"><input type="checkbox" name="mueble" value="Escritorio"><span>Escritorio</span></label>
+            <label class="opcion"><input type="checkbox" name="mueble" value="Baño"><span>Baño</span></label>
+            <label class="opcion"><input type="checkbox" name="mueble" value="Cuarto de chicos"><span>Cuarto de chicos</span></label>
+            <label class="opcion"><input type="checkbox" name="mueble" value="Otro"><span>Otro</span></label>
+          </div>
+          <span class="campo-ayuda">Podés elegir más de uno.</span>
+        </fieldset>
+
+        <div class="campo">
+          <label for="medidas">Medidas aproximadas</label>
+          <input type="text" id="medidas" name="medidas" placeholder="Ej: 3 m de ancho, 2,60 m de alto">
+          <span class="campo-ayuda">Ancho y alto de la pared, aunque sea a ojo.</span>
+        </div>
+
+        <div class="campo">
+          <label for="mensaje">Algo más que quieras contarnos</label>
+          <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+        </div>
+
+        <button type="submit" class="btn">Enviar consulta</button>
+      </form>
+
+      <aside class="contacto-lateral seccion-oscura" aria-labelledby="t-whatsapp" data-aos="fade-up">
+        <h2 id="t-whatsapp">¿Preferís WhatsApp?</h2>
+        <p>Escribinos directo y seguimos la charla por ahí. Si podés, mandanos una foto del lugar.</p>
+        <a class="btn" href="https://wa.me/549XXXXXXXXXX?text=Hola%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+        <h3>Qué pasa después</h3>
+        <ol class="contacto-pasos">
+          <li>Te respondemos para charlar qué necesitás.</li>
+          <li>Coordinamos una visita para medir.</li>
+          <li>Te mostramos el diseño y el presupuesto.</li>
+        </ol>
+      </aside>
     </section>
   </main>
     <footer class="pie">
