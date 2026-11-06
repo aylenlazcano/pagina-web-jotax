@@ -20,12 +20,10 @@
 // 4. Components (piezas repetibles)
 @use "components/buttons";
 @use "components/textos";
-@use "components/cards";
 @use "components/accordion";
 @use "components/carousel";
 @use "components/hero";
 @use "components/cita";
-@use "components/galerias";
 @use "components/formulario";
 @use "components/trabajos";
 @use "components/editorial";
@@ -36,3 +34,4 @@
 @use "components/cierre";
 @use "components/capitulo";
 @use "components/nosotros";
+@use "components/servicios";

@@ -1,0 +1,342 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// ==========================================================
+// SERVICIOS — rubros en acordeón, pasos con línea de avance
+// y la placa de melamina que se abre en capas.
+// ==========================================================
+
+// Estilo de la palabra activa (se reusa con @extend)
+%rubro-activo {
+  color: $accent;
+  background-image: linear-gradient($accent, $accent);
+  background-size: 100% 3px;
+}
+
+// ----- Índice de rubros: el encabezado es la lista -----
+.indice-rubros {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.indice-etiqueta {
+  margin: 0;
+  font-size: 0.9rem;
+  color: $muted;
+}
+
+.indice-frase {
+  margin: 0;
+  max-width: 22ch;
+  font-family: $font-titulos;
+  font-weight: 400;
+  font-size: clamp(2rem, 5.2vw, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  color: $ink; // los h1 comunes son nogal: acá va en tinta
+
+  // subrayado finito y gris, que se engrosa y toma el nogal al pasar el mouse
+  a {
+    color: inherit;
+    text-decoration: none;
+    background-image: linear-gradient(rgba($ink, 0.25), rgba($ink, 0.25));
+    background-position: 0 92%;
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
+    transition: color $transicion, background-size $transicion-lenta;
+
+    &:hover,
+    &:focus-visible {
+      @extend %rubro-activo;
+    }
+  }
+}
+
+.indice-cierre {
+  color: $muted;
+}
+
+.indice-rubros .copete {
+  margin: 0;
+}
+
+// ----- Detalle de cada rubro: se muestra el que elegiste en el índice -----
+// Cada palabra del h1 es un link a su panel (#rubro-...). Con :target se ve
+// solo el panel "apuntado". Si todavía no tocaste nada, se ve el primero.
+$rubros: cocinas, placares, living, escritorios, banos, chicos;
+
+
+.rubro-paneles {
+  margin-top: 0.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid $line;
+}
+
+.rubro-panel {
+  display: none;
+  gap: 1.25rem;
+  max-width: 52rem;
+  // al tocar una palabra, el navegador baja hasta el panel: con este margen
+  // la frase de arriba queda a la vista
+  scroll-margin-top: 60vh;
+
+  @include tablet {
+    grid-template-columns: 260px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  img {
+    @include img-cover(auto);
+    display: block;
+    max-width: 22rem;
+    aspect-ratio: 4 / 3;
+  }
+
+  h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: $ink;
+  }
+
+  p {
+    margin: 0 0 1rem;
+    max-width: 44ch;
+    color: $muted;
+  }
+}
+
+.rubro-panel:target,
+.rubro-paneles:not(:has(:target)) .rubro-panel:first-child {
+  display: grid;
+  animation: aparecer-panel 0.4s $ease-suave both;
+}
+
+// La palabra del rubro que se está viendo queda marcada
+@each $rubro in $rubros {
+  .indice-rubros:has(#rubro-#{$rubro}:target) a[href="#rubro-#{$rubro}"] {
+    @extend %rubro-activo;
+  }
+}
+
+.indice-rubros:not(:has(:target)) a[href="#rubro-cocinas"] {
+  @extend %rubro-activo;
+}
+
+@keyframes aparecer-panel {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+// Lo que incluye cada rubro, en píldoras
+.rubro-incluye {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding: 0.35rem 0.9rem;
+    border: 1px solid $line;
+    border-radius: $radio-pildora;
+    font-size: 0.85rem;
+  }
+}
+
+// ----- Cómo trabajamos: línea que se llena al scrollear -----
+.pasos {
+  position: relative;
+  display: grid;
+  gap: 3rem;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 3.5rem;
+
+  // ::before es el riel (gris), ::after es la parte que se llena (bronce)
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 1.25rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+  }
+
+  &::before {
+    background-color: rgba($on-accent, 0.16);
+  }
+
+  &::after {
+    background-color: $accent-claro;
+    transform-origin: top;
+  }
+
+  li {
+    position: relative;
+    z-index: 1;
+
+    &:last-child::after {
+      content: "";
+      position: absolute;
+      left: -3.5rem;
+      top: 2.5rem;
+      bottom: -0.5rem;
+      width: 2.5rem;
+      background-color: $oscuro-bg;
+    }
+  }
+
+  // el círculo con el número, centrado sobre la línea
+  .paso-n {
+    position: absolute;
+    left: -3.5rem;
+    top: 0;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid $accent-claro;
+    border-radius: 50%;
+    background-color: $oscuro-bg; // tapa la línea detrás del círculo
+    color: $accent-claro;
+    font-size: 0.95rem;
+  }
+
+  h3 {
+    margin: 0.4rem 0 0.5rem;
+    font-size: 1.375rem;
+  }
+
+  p {
+    margin: 0;
+    max-width: 40ch;
+  }
+}
+
+// ----- ¿Por qué melamina?: la placa en capas -----
+.placa {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.placa-capas {
+  display: flex;
+  flex-direction: column;
+  padding-block: 2rem; // lugar para que las capas se separen
+}
+
+.capa {
+  display: block;
+  border-radius: 2px;
+}
+
+// las dos láminas melamínicas, símil nogal
+.capa-1,
+.capa-3 {
+  height: 10px;
+  background: linear-gradient(90deg, #8A6446, $accent);
+}
+
+// el tablero del medio, con textura de aglomerado y el tapacanto en los bordes
+.capa-2 {
+  height: 90px;
+  background:
+    radial-gradient(rgba($negro, 0.18) 1px, transparent 1.5px) 0 0 / 7px 7px,
+    #C9B79C;
+  border-inline: 5px solid $accent;
+}
+
+.placa-etiquetas {
+  display: grid;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.85rem;
+  color: $muted;
+
+  li::before {
+    content: "— ";
+    color: $accent;
+  }
+}
+
+.melamina-datos {
+  display: grid;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+
+  li {
+    display: grid;
+    gap: 0.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid $line;
+  }
+
+  b {
+    font-weight: 600;
+  }
+
+  span {
+    color: $muted;
+  }
+}
+
+// ----- Animaciones ligadas al scroll (con fallback quieto) -----
+@supports (animation-timeline: view()) {
+  .pasos::after {
+    animation: dibujar-linea linear both; // el mismo @keyframes de la línea de tiempo de Nosotros
+    animation-timeline: view();
+    animation-range: entry 30% cover 60%;
+  }
+
+  .capa-1 {
+    animation: separar-arriba linear both;
+  }
+
+  .capa-3 {
+    animation: separar-abajo linear both;
+  }
+
+  // va después del shorthand "animation", que si no lo resetea
+  .capa-1,
+  .capa-3 {
+    animation-timeline: view();
+    animation-range: cover 25% cover 55%;
+  }
+}
+
+@keyframes separar-arriba {
+  to {
+    transform: translateY(-1.5rem);
+  }
+}
+
+@keyframes separar-abajo {
+  to {
+    transform: translateY(1.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pasos::after,
+  .capa-1,
+  .capa-3 {
+    animation: none;
+  }
+
+  .rubro-panel {
+    animation: none;
+  }
+
+}
