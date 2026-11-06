@@ -2,7 +2,7 @@
 
 Sitio web de Jotax Team, taller de muebles a medida en melamina de La Plata. Proyecto final del curso de desarrollo web.
 
-🔗 **Sitio publicado:** _(link de Netlify)_
+🔗 **Sitio publicado:** https://jotax-team.netlify.app
 
 ## Páginas
 - **Inicio** — hero, primera visita con cota, trabajos, antes y después y preguntas frecuentes.
