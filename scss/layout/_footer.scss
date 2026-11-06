@@ -2,7 +2,7 @@
 @use "../utilities/mixins" as *;
 @use "secciones";
 
-// Footer oscuro de las 5 páginas: columnas de links, JOTAX gigante y línea legal.
+// ----- Footer -----
 
 footer {
   @extend %seccion-oscura;
@@ -54,7 +54,7 @@ footer {
   color: $on-accent-muted;
 }
 
-// JOTAX gigante, con "team®" en cursiva
+// JOTAX grande
 .pie-marca {
   margin: 0;
   font-family: $font-titulos;
@@ -65,7 +65,6 @@ footer {
   letter-spacing: -0.04em;
   color: $on-accent;
 
-  // la palabra con "team®" arriba a la derecha
   span {
     display: inline-flex;
     align-items: flex-start;
@@ -92,7 +91,7 @@ footer {
   color: $on-accent-muted;
 }
 
-// La palabra se ensancha mientras aparece en pantalla
+// se ensancha con el scroll
 @keyframes ensanchar-marca {
   from {
     font-variation-settings: "wdth" 72;

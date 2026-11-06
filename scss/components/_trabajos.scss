@@ -1,10 +1,7 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-// Sección oscura "Trabajos" del inicio.
-// Mobile: carrusel que se desliza con el dedo.
-// Tablet: grilla con grid-template-areas (foto ancha + alta, y una panorámica abajo).
-// Desktop: la sección se queda fija y las fotos pasan de derecha a izquierda al scrollear.
+// ----- Trabajos del inicio -----
 
 .trabajos {
   display: grid;
@@ -16,8 +13,7 @@
     "mas";
 }
 
-// Los dos envoltorios solo se usan en desktop. Antes, "display: contents" hace
-// como si no existieran y sus hijos quedan directo en la grilla.
+// display: contents hasta desktop
 .trabajos-pin,
 .trabajos-tira {
   display: contents;
@@ -34,7 +30,7 @@
   justify-self: start;
 }
 
-// ----- MOBILE: carrusel -----
+// ----- mobile: carrusel -----
 .trabajos-carril {
   grid-area: carril;
   display: flex;
@@ -42,7 +38,6 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  // el carril llega hasta los bordes de la pantalla
   margin-inline: calc(#{$margen-lateral-mobile} * -1);
   padding-inline: $margen-lateral-mobile;
   scroll-padding-inline: $margen-lateral-mobile;
@@ -61,7 +56,7 @@
   }
 }
 
-// ----- TABLET (y desktop sin animación): grilla de 12 columnas -----
+// ----- tablet: grilla -----
 @include tablet {
   .trabajos {
     grid-template-columns: repeat(12, 1fr);
@@ -93,10 +88,9 @@
   }
 }
 
-// ----- DESKTOP: recorrido horizontal ligado al scroll -----
+// ----- desktop: horizontal con scroll -----
 @keyframes recorrer-trabajos {
   to {
-    // corre la tira hacia la izquierda todo su ancho, menos lo que entra en pantalla
     transform: translateX(calc(-100% + 100vw));
   }
 }
@@ -106,7 +100,7 @@
     @include desktop {
       .trabajos {
         display: block;
-        height: 300vh; // cuánto hay que scrollear para recorrer toda la tira
+        height: 300vh;
         padding: 0;
         view-timeline-name: --trabajos;
       }
@@ -143,7 +137,7 @@
       }
 
       .trabajos-carril .trabajo {
-        flex: none; // anula el 84% del carrusel de mobile
+        flex: none;
         width: 46vw;
       }
 

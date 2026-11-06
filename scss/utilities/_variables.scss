@@ -29,7 +29,6 @@ $bp-tablet: 768px;
 $bp-nav: 992px;
 $bp-desktop: 1024px;
 
-
 // ===== Medidas =====
 $ancho-max: 1300px;
 $radio-borde: 4px;
@@ -46,6 +45,6 @@ $retraso-base: 0.15s;
 $margen-lateral: 5vw;          // aire a los costados en desktop
 $margen-lateral-mobile: 6vw;
 
-// ===== Curvas de animación (del prototipo) =====
+// ===== Curvas de animación =====
 $ease-reveal: cubic-bezier(0.76, 0, 0.24, 1);   // la foto que se descubre
 $ease-suave: cubic-bezier(0.2, 0.7, 0.2, 1);    // zooms y hovers

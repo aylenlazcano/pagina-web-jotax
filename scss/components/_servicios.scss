@@ -1,19 +1,14 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-// ==========================================================
-// SERVICIOS — rubros en acordeón, pasos con línea de avance
-// y la placa de melamina que se abre en capas.
-// ==========================================================
-
-// Estilo de la palabra activa (se reusa con @extend)
+// palabra activa
 %rubro-activo {
   color: $accent;
   background-image: linear-gradient($accent, $accent);
   background-size: 100% 3px;
 }
 
-// ----- Índice de rubros: el encabezado es la lista -----
+// ----- Índice de rubros -----
 .indice-rubros {
   display: grid;
   gap: 1.5rem;
@@ -34,9 +29,9 @@
   line-height: 1.08;
   letter-spacing: -0.03em;
   text-wrap: balance;
-  color: $ink; // los h1 comunes son nogal: acá va en tinta
+  color: $ink;
 
-  // subrayado finito y gris, que se engrosa y toma el nogal al pasar el mouse
+  // subrayado gris
   a {
     color: inherit;
     text-decoration: none;
@@ -61,11 +56,8 @@
   margin: 0;
 }
 
-// ----- Detalle de cada rubro: se muestra el que elegiste en el índice -----
-// Cada palabra del h1 es un link a su panel (#rubro-...). Con :target se ve
-// solo el panel "apuntado". Si todavía no tocaste nada, se ve el primero.
+// ----- Panel de cada rubro (:target) -----
 $rubros: cocinas, placares, living, escritorios, banos, chicos;
-
 
 .rubro-paneles {
   margin-top: 0.5rem;
@@ -77,8 +69,7 @@ $rubros: cocinas, placares, living, escritorios, banos, chicos;
   display: none;
   gap: 1.25rem;
   max-width: 52rem;
-  // al tocar una palabra, el navegador baja hasta el panel: con este margen
-  // la frase de arriba queda a la vista
+  // para que la frase siga a la vista
   scroll-margin-top: 60vh;
 
   @include tablet {
@@ -114,7 +105,6 @@ $rubros: cocinas, placares, living, escritorios, banos, chicos;
   animation: aparecer-panel 0.4s $ease-suave both;
 }
 
-// La palabra del rubro que se está viendo queda marcada
 @each $rubro in $rubros {
   .indice-rubros:has(#rubro-#{$rubro}:target) a[href="#rubro-#{$rubro}"] {
     @extend %rubro-activo;
@@ -132,7 +122,7 @@ $rubros: cocinas, placares, living, escritorios, banos, chicos;
   }
 }
 
-// Lo que incluye cada rubro, en píldoras
+// píldoras
 .rubro-incluye {
   display: flex;
   flex-wrap: wrap;
@@ -149,7 +139,7 @@ $rubros: cocinas, placares, living, escritorios, banos, chicos;
   }
 }
 
-// ----- Cómo trabajamos: línea que se llena al scrollear -----
+// ----- Cómo trabajamos -----
 .pasos {
   position: relative;
   display: grid;
@@ -158,7 +148,7 @@ $rubros: cocinas, placares, living, escritorios, banos, chicos;
   margin: 0;
   padding: 0 0 0 3.5rem;
 
-  // ::before es el riel (gris), ::after es la parte que se llena (bronce)
+  // before = línea gris, after = la que se llena
   &::before,
   &::after {
     content: "";
@@ -193,7 +183,7 @@ $rubros: cocinas, placares, living, escritorios, banos, chicos;
     }
   }
 
-  // el círculo con el número, centrado sobre la línea
+  // número
   .paso-n {
     position: absolute;
     left: -3.5rem;
@@ -205,7 +195,7 @@ $rubros: cocinas, placares, living, escritorios, banos, chicos;
     height: 2.5rem;
     border: 1px solid $accent-claro;
     border-radius: 50%;
-    background-color: $oscuro-bg; // tapa la línea detrás del círculo
+    background-color: $oscuro-bg;
     color: $accent-claro;
     font-size: 0.95rem;
   }
@@ -221,7 +211,7 @@ $rubros: cocinas, placares, living, escritorios, banos, chicos;
   }
 }
 
-// ----- ¿Por qué melamina?: la placa en capas -----
+// ----- Placa en capas -----
 .placa {
   display: grid;
   gap: 1.5rem;
@@ -230,7 +220,7 @@ $rubros: cocinas, placares, living, escritorios, banos, chicos;
 .placa-capas {
   display: flex;
   flex-direction: column;
-  padding-block: 2rem; // lugar para que las capas se separen
+  padding-block: 2rem;
 }
 
 .capa {
@@ -238,14 +228,14 @@ $rubros: cocinas, placares, living, escritorios, banos, chicos;
   border-radius: 2px;
 }
 
-// las dos láminas melamínicas, símil nogal
+// láminas
 .capa-1,
 .capa-3 {
   height: 10px;
   background: linear-gradient(90deg, #8A6446, $accent);
 }
 
-// el tablero del medio, con textura de aglomerado y el tapacanto en los bordes
+// tablero + tapacanto
 .capa-2 {
   height: 90px;
   background:
@@ -292,10 +282,10 @@ $rubros: cocinas, placares, living, escritorios, banos, chicos;
   }
 }
 
-// ----- Animaciones ligadas al scroll (con fallback quieto) -----
+// ----- Animaciones con scroll -----
 @supports (animation-timeline: view()) {
   .pasos::after {
-    animation: dibujar-linea linear both; // el mismo @keyframes de la línea de tiempo de Nosotros
+    animation: dibujar-linea linear both;
     animation-timeline: view();
     animation-range: entry 30% cover 60%;
   }
@@ -308,7 +298,7 @@ $rubros: cocinas, placares, living, escritorios, banos, chicos;
     animation: separar-abajo linear both;
   }
 
-  // va después del shorthand "animation", que si no lo resetea
+  // después del shorthand
   .capa-1,
   .capa-3 {
     animation-timeline: view();

@@ -1,9 +1,7 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-// Navbar de Bootstrap con el estilo del diseño final.
-// Mobile y tablet: botón "Menú" en píldora que abre un menú oscuro a pantalla completa.
-// Desde 992px: links en fila, con una línea que crece abajo al pasar el mouse.
+// ----- Navbar -----
 
 .navbar {
   --bs-navbar-color: #{$ink};
@@ -23,7 +21,7 @@
     padding: 0;
   }
 
-  // Logo: JOTAX con "team®" chico en cursiva arriba
+  // logo
   &-brand.logo {
     display: inline-flex;
     align-items: flex-start;
@@ -52,7 +50,7 @@
     }
   }
 
-  // Ubicación a la izquierda (solo en el index, donde el logo es el hero)
+  // ubicación (solo index)
   .nav-ubicacion {
     padding: 0;
     font-size: 0.9rem;
@@ -69,7 +67,7 @@
       text-decoration: none;
     }
 
-    // Línea que crece debajo del link al pasar el mouse
+    // línea en hover
     &::after {
       content: "";
       position: absolute;
@@ -87,10 +85,10 @@
     }
   }
 
-  // Botón "Menú" / "Cerrar" en forma de píldora
+  // botón menú
   &-toggler {
     position: relative;
-    z-index: 1050; // queda por encima del menú abierto
+    z-index: 1050;
     min-height: 44px;
     padding: 0 1.1rem;
     border: 1px solid currentColor;
@@ -109,7 +107,7 @@
       outline-offset: 3px;
     }
 
-    // Por defecto dice "Menú"; con el menú abierto dice "Cerrar"
+    // menú / cerrar
     .menu-cerrar {
       display: none;
     }
@@ -128,7 +126,6 @@
   }
 }
 
-// Los links entran de abajo hacia arriba, uno atrás del otro
 @keyframes entrar-link {
   from {
     opacity: 0;
@@ -136,7 +133,7 @@
   }
 }
 
-// ===== MOBILE Y TABLET (hasta 991px): menú a pantalla completa =====
+// ----- mobile y tablet: menú pantalla completa -----
 @media (max-width: #{$bp-nav - 0.02px}) {
 
   .navbar-collapse {
@@ -148,7 +145,6 @@
     overflow-y: auto;
   }
 
-  // Abierto: los links se apilan abajo de todo
   .navbar-collapse.show,
   .navbar-collapse.collapsing {
     display: flex;
@@ -156,15 +152,14 @@
     justify-content: flex-end;
   }
 
-  // Bootstrap anima la ALTURA al abrir. Como este menú ocupa toda la pantalla,
-  // apagamos esa animación y usamos la de los links (entrar-link).
+  // saco la animación de altura de bootstrap
   .navbar-collapse.collapsing {
     height: auto !important;
     transition: none;
   }
 
   .navbar-nav {
-    width: 100%; // anula el ms-auto de Bootstrap: los links ocupan todo el ancho
+    width: 100%;
     border-bottom: 1px solid rgba($on-accent, 0.16);
   }
 
@@ -190,7 +185,7 @@
     line-height: 1.05;
     letter-spacing: -0.02em;
     color: $on-accent;
-    // gesto propio del sitio: la letra se ensancha al pasar el dedo o el mouse
+    // se ensancha en hover
     transition: font-variation-settings 0.4s $ease-suave, color $transicion;
 
     &::after {
@@ -208,7 +203,6 @@
     }
   }
 
-  // El logo y la ubicación quedan visibles arriba del menú, en claro
   .navbar-brand,
   .nav-ubicacion {
     position: relative;
@@ -227,13 +221,13 @@
     }
   }
 
-  // Con el menú abierto, la página de atrás no scrollea
+  // sin scroll atrás
   body:has(.navbar-collapse.show) {
     overflow: hidden;
   }
 }
 
-// ===== DESKTOP (desde 992px): links en fila =====
+// ----- desktop -----
 @media (min-width: $bp-nav) {
   .navbar-nav {
     gap: 2rem;

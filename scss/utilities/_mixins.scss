@@ -1,21 +1,20 @@
 @use "variables" as *;
 
-
-// Media query de tablet (desde 768px)
+// tablet
 @mixin tablet {
   @media (min-width: $bp-tablet) {
     @content;
   }
 }
 
-// Media query de desktop (lo usás en casi todos los componentes)
+// desktop
 @mixin desktop {
   @media (min-width: $bp-desktop) {
     @content;
   }
 }
 
-// Bloques flex mobile-first: en columna en mobile, en fila desde desktop
+// columna en mobile, fila en desktop
 @mixin columna-a-fila($gap) {
   display: flex;
   flex-direction: column;
@@ -26,29 +25,27 @@
   }
 }
 
-// Textos chicos de interfaz (menú, footer, links).
-// Sin mayúsculas: el diseño final no las usa.
+// textos chicos
 @mixin etiqueta($espaciado: 0) {
   font-size: 0.9rem;
   letter-spacing: $espaciado;
   font-weight: 500;
 }
-// Imágenes que llenan su caja sin deformarse
+// imagen que llena la caja
 @mixin img-cover($alto) {
   width: 100%;
   height: $alto;
   object-fit: cover;
 }
 
-// Epígrafes de fotos (figcaption)
+// epígrafes
 @mixin epigrafe {
   font-size: 0.8rem;
   color: $muted;
   margin-top: 0.5rem;
 }
 
-// Fondo rayado para lugares donde todavía falta una foto
-// $color: color de fondo · $angulo: inclinación de las rayas
+// fondo rayado
 @mixin rayado($color, $angulo: 135deg) {
   background:
     repeating-linear-gradient($angulo, rgba($negro, 0.05) 0 12px, transparent 12px 24px),

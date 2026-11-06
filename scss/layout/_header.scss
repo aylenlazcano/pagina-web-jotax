@@ -1,8 +1,7 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-// "body > header" = solo el header principal (hijo directo del body).
-// Así no afecta a otros <header> de adentro de la página, como los de cada rubro en Trabajos.
+// solo el header principal, no los de adentro
 
 body > header {
   position: absolute;

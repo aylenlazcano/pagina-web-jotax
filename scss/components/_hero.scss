@@ -1,7 +1,7 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-// ----- Animaciones de entrada (al cargar) -----
+// ----- Animaciones al cargar -----
 @keyframes subir-palabra {
   from {
     opacity: 0;
@@ -22,7 +22,7 @@
   }
 }
 
-// ----- Animaciones ligadas al scroll -----
+// ----- Animaciones con scroll -----
 @keyframes abrir-foto {
   from {
     clip-path: var(--recorte);
@@ -41,7 +41,6 @@
   }
 }
 
-// Medidas compartidas por las dos palabras
 %hero-palabra-base {
   position: absolute;
   top: var(--arriba);
@@ -60,18 +59,17 @@
   animation: subir-palabra 1s $ease-suave 0.15s both;
 }
 
-// ===== MOBILE (base) =====
+// ----- mobile -----
 .hero {
-  padding: 0; // anula el padding general de section
+  padding: 0;
 }
 
 .hero-escena {
-  // medidas del hero en mobile
   --pad: 6cqw;
   --arriba: 5.5rem;
   --ancho: 72;
   --tamano: calc((100cqw - 12cqw - 3rem) / 2.4);
-  // dónde arranca la foto: a la altura del tercio de abajo de JOTAX
+  // la foto arranca a la altura de JOTAX
   --foto-arriba: calc(var(--arriba) + var(--tamano) * 0.49);
   --recorte: inset(var(--foto-arriba) var(--pad) 0 var(--pad));
 
@@ -88,7 +86,7 @@
   z-index: 1;
   color: $ink;
 
-  // copia clara, adentro de la foto
+  // copia clara sobre la foto
   &--clara {
     color: $on-accent;
   }
@@ -127,7 +125,7 @@
     transform-origin: 70% 70%;
   }
 
-  // sombra arriba para que la palabra clara se lea sobre la foto
+  // sombra para que se lea
   &::after {
     content: "";
     position: absolute;
@@ -143,20 +141,6 @@
   .hero-palabra {
     z-index: 3;
   }
-}
-
-.hero-ref {
-  position: absolute;
-  z-index: 3;
-  left: calc(var(--pad) + 0.75rem);
-  bottom: 0.75rem;
-  margin: 0;
-  padding: 0.25rem 0.5rem;
-  font-family: $font-texto;
-  font-size: 0.72rem;
-  line-height: 1.4;
-  color: $on-accent;
-  background-color: rgba($ink, 0.55);
 }
 
 .hero-texto {
@@ -220,7 +204,7 @@
   }
 }
 
-// ===== TABLET =====
+// ----- tablet -----
 @include tablet {
   .hero-escena {
     --ancho: 80;
@@ -228,13 +212,12 @@
   }
 }
 
-// ===== DESKTOP: texto a la izquierda, foto a la derecha =====
+// ----- desktop -----
 @include desktop {
   .hero-escena {
     --pad: 5cqw;
     --arriba: 6rem;
     --ancho: 100;
-    // ancho de pantalla O alto disponible: el que sea más chico
     --tamano: min(calc((100cqw - 10cqw) / 3.45), calc((100svh - 25rem) * 1.25));
     --foto-arriba: calc(var(--arriba) + var(--tamano) * 0.52);
     --recorte: inset(var(--foto-arriba) 3cqw 2.5rem 3cqw);
@@ -252,15 +235,9 @@
       transform-origin: 60% 65%;
     }
 
-    // la copia clara se corre a la izquierda lo que mide la columna del texto
     .hero-palabra {
       left: calc(var(--pad) - 40cqw);
     }
-  }
-
-  .hero-ref {
-    left: calc(3cqw + 0.75rem);
-    bottom: calc(2.5rem + 0.75rem);
   }
 
   .hero-texto {
@@ -281,7 +258,7 @@
   }
 }
 
-// ===== NOTEBOOKS BAJITAS (compu, pero menos de 820px de alto) =====
+// ----- notebooks con poca altura -----
 @media (min-width: $bp-desktop) and (max-height: 820px) {
   .hero-meta {
     display: none;
@@ -297,9 +274,7 @@
   }
 }
 
-// ===== ANIMACIÓN CON EL SCROLL =====
-// Solo si el navegador sabe hacerlo y la persona no pidió menos movimiento.
-// Si no, se ve la composición quieta de arriba.
+// ----- scroll -----
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .hero {
@@ -336,7 +311,7 @@
   }
 }
 
-// Menos movimiento: sin animaciones de entrada tampoco
+// reduced motion
 @media (prefers-reduced-motion: reduce) {
   .hero-palabra,
   .hero-imagen,

@@ -1,12 +1,7 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-// Galería de la página Trabajos: un capítulo por rubro.
-// - Barra de rubros fija arriba (Bootstrap ScrollSpy marca en cuál estás).
-// - Cada capítulo: número, título gigante que se ensancha al entrar y una tira
-//   horizontal de fotos a la misma altura, cada una con su proporción real.
-// - La barra de avance de la tira es su propia barra de scroll, estilada:
-//   se puede arrastrar con el mouse y en el celu se desliza con el dedo.
+// ----- Trabajos: un capítulo por rubro -----
 
 .galeria {
   padding-bottom: 3rem;
@@ -51,7 +46,7 @@
       text-decoration: none;
     }
 
-    // ScrollSpy le pone .active al link del capítulo que estás viendo
+    // scrollspy marca el rubro que estás viendo
     &.active {
       background-color: $on-accent;
       color: $ink;
@@ -67,7 +62,7 @@
 // ----- Capítulo -----
 .capitulo {
   padding: 4.5rem 0 0;
-  scroll-margin-top: 4rem; // que la barra fija no tape el título al saltar
+  scroll-margin-top: 4rem;  // para que la barra no tape el título
 
   @include desktop {
     padding-top: 7.5rem;
@@ -115,14 +110,14 @@
 
 // ----- Tira horizontal de fotos -----
 .tira {
-  --alto: 62vw; // alto de todas las fotos de la tira
+  --alto: 62vw;
   display: flex;
   gap: 0.75rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-padding-inline: $margen-lateral-mobile;
   padding: 0 $margen-lateral-mobile 1.25rem;
-  // la barra de scroll es la barra de avance
+  // barra de scroll estilada
   scrollbar-width: thin;
   scrollbar-color: $on-accent rgba($on-accent, 0.16);
 
@@ -144,11 +139,11 @@
 
   .figura {
     flex: none;
-    width: min-content; // la figura mide lo que mide su foto
+    width: min-content;
     scroll-snap-align: start;
   }
 
-  // Cada foto con el mismo alto: el ancho sale solo de su proporción
+  // mismo alto para todas, el ancho depende de cada foto
   .figura-imagen img {
     height: var(--alto);
     width: auto;
@@ -157,7 +152,7 @@
   }
 }
 
-// Capítulo de una sola foto: más grande y sin tira
+// rubro con una sola foto
 .capitulo--solo .tira {
   overflow: visible;
 
@@ -172,7 +167,7 @@
   }
 }
 
-// ----- El título del capítulo se ensancha al entrar en pantalla -----
+// ----- Título que se ensancha -----
 @keyframes ensanchar-titulo {
   to {
     font-variation-settings: "wdth" 110;

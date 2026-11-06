@@ -1,8 +1,7 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-// Acordeón de Bootstrap con el estilo editorial: sin cajas ni fondos,
-// solo líneas finas entre preguntas y un "+" que se vuelve "−" al abrir.
+// ----- Acordeón (preguntas del inicio) -----
 
 .accordion {
   --bs-accordion-bg: transparent;
@@ -40,7 +39,7 @@
       outline-offset: 4px;
     }
 
-    // El "+" dibujado con dos líneas (reemplaza la flechita de Bootstrap)
+    // "+" hecho con dos líneas en vez de la flecha de bootstrap
     &::after {
       width: 20px;
       height: 20px;
@@ -51,8 +50,8 @@
       transition: background-size 0.35s $ease-suave;
     }
 
-    // Abierta: la línea vertical se achica y queda un "−".
-    // Se repite background-image porque Bootstrap pone acá su propia flechita.
+    // abierta: queda un "−"
+    // repito el background-image porque bootstrap lo pisa
     &:not(.collapsed)::after {
       background-image: linear-gradient(currentColor, currentColor), linear-gradient(currentColor, currentColor);
       background-size: 100% 1.5px, 1.5px 0;

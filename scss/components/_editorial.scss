@@ -1,11 +1,9 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-// Piezas editoriales que se repiten en todo el sitio:
-// sección con aire, título grande, copete, texto, link con línea,
-// foto con epígrafe y la grilla "split".
+// ----- Piezas que se repiten en todo el sitio -----
 
-// ----- Sección con aire y una línea fina arriba -----
+// ----- Sección -----
 .seccion {
   padding-block: 5.5rem;
   border-top: 1px solid $line;
@@ -15,7 +13,7 @@
   }
 }
 
-// ----- Encabezado de las páginas internas (h1 + copete) -----
+// ----- Encabezado páginas internas -----
 .encabezado-pagina {
   padding-block: 3.5rem 4rem;
 
@@ -24,7 +22,7 @@
   }
 }
 
-// ----- Título grande de sección -----
+// ----- Título grande -----
 .titulo-display {
   margin: 0;
   font-family: $font-titulos;
@@ -34,10 +32,10 @@
   letter-spacing: -0.03em;
   text-wrap: balance;
   max-width: 18ch;
-  color: inherit; // si es un h1, no toma el nogal de los h1 comunes
+  color: inherit;
 }
 
-// ----- Copete: la bajada que acompaña al título -----
+// ----- Copete -----
 .copete {
   margin: 0;
   font-size: clamp(1rem, 1.25vw, 1.125rem);
@@ -59,7 +57,7 @@
   }
 }
 
-// ----- Link con línea abajo que se achica al pasar el mouse -----
+// ----- Link con línea -----
 .link-linea {
   display: inline-block;
   padding: 0.75rem 0 0.5rem;
@@ -85,8 +83,7 @@
 
   &-imagen {
     position: relative;
-    // "clip" y no "hidden": hidden la convierte en un contenedor con scroll propio
-    // y las animaciones ligadas al scroll de adentro (la cota) quedan congeladas
+    // clip y no hidden, si no se frena la animación de la cota
     overflow: clip;
     background-color: $superficie;
 
@@ -99,7 +96,7 @@
     }
   }
 
-  // la foto se acerca apenas al pasar el mouse
+  // zoom suave en hover
   &:hover &-imagen img {
     transform: scale(1.035);
   }
@@ -111,7 +108,7 @@
     gap: 0.125rem 0.75rem;
     font-size: 0.85rem;
 
-    span:last-child {
+    span:last-child:not(:first-child) {
       font-size: 0.8rem;
       color: $muted;
     }
@@ -119,14 +116,13 @@
 }
 
 // ----- Grilla "split" -----
-// Mobile: todo en una columna.
-// Desktop: título a todo el ancho; foto a la izquierda y texto a la derecha.
+// mobile una columna, desktop título arriba y foto | texto
 .split {
   display: grid;
   gap: 1.75rem;
 
   > * {
-    min-width: 0; // evita que una foto ancha rompa la grilla
+    min-width: 0;
   }
 
   @include desktop {
@@ -150,13 +146,11 @@
   }
 }
 
-// La foto lateral es vertical
 .split-lateral .figura-imagen img {
   aspect-ratio: 4 / 5;
 }
 
-
-// ----- Ajustes dentro de secciones oscuras -----
+// ----- En secciones oscuras -----
 .seccion-oscura {
   .link-linea,
   .link-linea:hover {
@@ -166,7 +160,7 @@
   .figura figcaption {
     color: $on-accent;
 
-    span:last-child {
+    span:last-child:not(:first-child) {
       color: $on-accent-muted;
     }
   }

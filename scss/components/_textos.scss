@@ -1,7 +1,7 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-// Textos reutilizables: eyebrow, bajada y bloque de cierre con CTA
+// ----- Textos -----
 
 .eyebrow {
   @include etiqueta;

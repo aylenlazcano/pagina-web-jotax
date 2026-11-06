@@ -1,7 +1,6 @@
 @use "../utilities/variables" as *;
 
-// Cota de plano sobre la foto de "Primero vamos a tu casa":
-// una línea con dos topes que se dibuja al scrollear y mide la pared.
+// ----- Cota sobre la foto -----
 
 .cota {
   position: absolute;
@@ -15,7 +14,7 @@
   filter: drop-shadow(0 1px 2px rgba($negro, 0.45));
   view-timeline-name: --cota;
 
-  // los dos topes verticales de la cota
+  // topes
   &::before,
   &::after {
     content: "";
@@ -68,8 +67,7 @@
   }
 }
 
-// Solo si el navegador sabe animar con el scroll y la persona no pidió menos movimiento.
-// Si no, la cota se ve completa y quieta.
+// animación con scroll (si no, queda quieta)
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .cota-linea {

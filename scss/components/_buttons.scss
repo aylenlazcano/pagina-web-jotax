@@ -29,7 +29,7 @@
   }
 }
 
-// Link con círculo y flecha (estilo editorial del prototipo)
+// link con círculo y flecha
 .link-redondo {
   @include etiqueta;
   display: inline-flex;
@@ -52,15 +52,14 @@
     transition: background-color $transicion-lenta, color $transicion-lenta;
   }
 
-  // Al pasar el mouse por el link, el círculo se rellena
+  // hover: se rellena el círculo
   &:hover &-icono {
     background-color: $ink;
     color: $bg;
   }
 }
 
-
-// Botón sobre fondo oscuro: claro, y bronce al pasar el mouse
+// botón en fondo oscuro
 .seccion-oscura .btn {
   background-color: $on-accent;
   color: $ink;

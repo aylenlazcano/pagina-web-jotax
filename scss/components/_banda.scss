@@ -1,8 +1,8 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-// Banda gigante con los rubros y fotitos en forma de píldora entre palabra y palabra.
-// Al scrollear, la banda se corre hacia la izquierda.
+// ----- Banda de rubros -----
+// se mueve a la izquierda con el scroll
 
 .banda {
   overflow: clip;

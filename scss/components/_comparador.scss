@@ -1,12 +1,9 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-// Comparador "Antes y después".
-// La foto del antes va encima de la del después y se recorta hasta la línea.
-// La posición de la línea es una variable (--pos): al scrollear, la animación la mueve
-// de derecha a izquierda y va descubriendo el después.
+// ----- Antes y después -----
 
-// Registrar --pos como porcentaje permite animarla (una variable común salta de golpe)
+// con @property se puede animar --pos
 @property --pos {
   syntax: "<percentage>";
   inherits: true;
@@ -26,7 +23,7 @@
     gap: 0.125rem 0.75rem;
     font-size: 0.85rem;
 
-    span:last-child {
+    span:last-child:not(:first-child) {
       font-size: 0.8rem;
       color: $muted;
     }
@@ -50,7 +47,6 @@
     aspect-ratio: 21 / 9;
   }
 
-  // cuando lleguen las fotos reales, van acá adentro
   img {
     width: 100%;
     height: 100%;
@@ -68,7 +64,7 @@
   position: absolute;
   inset: 0;
   color: #3A3732;
-  // se ve solo lo que queda a la izquierda de la línea
+  // recorta el antes hasta la línea
   clip-path: inset(0 calc(100% - var(--pos)) 0 0);
 }
 
@@ -83,7 +79,7 @@
   background-color: #fff;
   box-shadow: 0 0 12px rgba($negro, 0.25);
 
-  // la manija redonda en el medio
+  // manija
   span {
     position: absolute;
     top: 50%;
@@ -121,7 +117,7 @@
   }
 }
 
-// ----- La línea se mueve sola al scrollear -----
+// ----- Línea con el scroll -----
 @keyframes barrer-comparador {
   from {
     --pos: 88%;
