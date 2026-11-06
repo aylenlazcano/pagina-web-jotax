@@ -552,29 +552,6 @@ footer a, .seccion-oscura a {
   color: #55514B;
 }
 
-article .carousel-item img {
-  height: 450px;
-  object-fit: cover;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-  width: 3.5rem;
-  opacity: 0.8;
-  transition: opacity 0.2s ease, background-color 0.2s ease;
-}
-.carousel-control-prev:hover, .carousel-control-prev:focus,
-.carousel-control-next:hover,
-.carousel-control-next:focus {
-  opacity: 1;
-  background-color: rgba(94, 63, 42, 0.3);
-  outline: none;
-}
-.carousel-control-prev:active,
-.carousel-control-next:active {
-  background-color: rgba(94, 63, 42, 0.45);
-}
-
 @keyframes subir-palabra {
   from {
     opacity: 0;
