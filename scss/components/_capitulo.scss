@@ -1,0 +1,190 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// Galería de la página Trabajos: un capítulo por rubro.
+// - Barra de rubros fija arriba (Bootstrap ScrollSpy marca en cuál estás).
+// - Cada capítulo: número, título gigante que se ensancha al entrar y una tira
+//   horizontal de fotos a la misma altura, cada una con su proporción real.
+// - La barra de avance de la tira es su propia barra de scroll, estilada:
+//   se puede arrastrar con el mouse y en el celu se desliza con el dedo.
+
+.galeria {
+  padding-bottom: 3rem;
+}
+
+// ----- Barra de rubros -----
+.capitulos-nav {
+  position: sticky;
+  top: 0;
+  z-index: 15;
+  display: flex;
+  gap: 0.375rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0.75rem $margen-lateral-mobile;
+  background-color: $oscuro-bg;
+  border-bottom: 1px solid rgba($on-accent, 0.16);
+
+  @include desktop {
+    padding-inline: $margen-lateral;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  a {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    min-height: 40px;
+    padding: 0 0.875rem;
+    border-radius: $radio-pildora;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $on-accent-muted;
+    transition: background-color $transicion, color $transicion;
+
+    &:hover {
+      color: $on-accent;
+      text-decoration: none;
+    }
+
+    // ScrollSpy le pone .active al link del capítulo que estás viendo
+    &.active {
+      background-color: $on-accent;
+      color: $ink;
+    }
+  }
+
+  sup {
+    top: -0.4em;
+    font-size: 0.625rem;
+  }
+}
+
+// ----- Capítulo -----
+.capitulo {
+  padding: 4.5rem 0 0;
+  scroll-margin-top: 4rem; // que la barra fija no tape el título al saltar
+
+  @include desktop {
+    padding-top: 7.5rem;
+  }
+}
+
+.capitulo-encabezado {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: end;
+  gap: 0.375rem 1rem;
+  padding: 0 $margen-lateral-mobile 1.4rem;
+
+  @include desktop {
+    padding: 0 $margen-lateral 1.9rem;
+  }
+
+  h2 {
+    margin: 0;
+    min-width: 0;
+    font-family: $font-titulos;
+    font-weight: 300;
+    font-variation-settings: "wdth" 75;
+    font-size: clamp(2.5rem, 9vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+  }
+}
+
+.capitulo-numero,
+.capitulo-cantidad {
+  padding-bottom: 0.5em;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.capitulo-numero {
+  color: $accent-claro;
+}
+
+.capitulo-cantidad {
+  color: $on-accent-muted;
+}
+
+// ----- Tira horizontal de fotos -----
+.tira {
+  --alto: 62vw; // alto de todas las fotos de la tira
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: $margen-lateral-mobile;
+  padding: 0 $margen-lateral-mobile 1.25rem;
+  // la barra de scroll es la barra de avance
+  scrollbar-width: thin;
+  scrollbar-color: $on-accent rgba($on-accent, 0.16);
+
+  @include tablet {
+    --alto: min(56vh, 46vw);
+  }
+
+  @include desktop {
+    --alto: min(62vh, 640px);
+    gap: 1rem;
+    scroll-padding-inline: $margen-lateral;
+    padding-inline: $margen-lateral;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent-claro;
+    outline-offset: -2px;
+  }
+
+  .figura {
+    flex: none;
+    width: min-content; // la figura mide lo que mide su foto
+    scroll-snap-align: start;
+  }
+
+  // Cada foto con el mismo alto: el ancho sale solo de su proporción
+  .figura-imagen img {
+    height: var(--alto);
+    width: auto;
+    max-width: none;
+    aspect-ratio: auto;
+  }
+}
+
+// Capítulo de una sola foto: más grande y sin tira
+.capitulo--solo .tira {
+  overflow: visible;
+
+  .figura {
+    width: 100%;
+  }
+
+  .figura-imagen img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+  }
+}
+
+// ----- El título del capítulo se ensancha al entrar en pantalla -----
+@keyframes ensanchar-titulo {
+  to {
+    font-variation-settings: "wdth" 110;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .capitulo-encabezado h2 {
+      animation: ensanchar-titulo linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 45%;
+    }
+  }
+}

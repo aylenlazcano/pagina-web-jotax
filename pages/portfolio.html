@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="../styles/style.css">
 </head>
 
-<body class="header-simple">
+<body class="header-simple" data-bs-spy="scroll" data-bs-target="#capitulos" data-bs-root-margin="-20% 0px -60%">
   <header>
     <nav class="navbar navbar-expand-lg ">
       <div class="container-fluid">
@@ -56,97 +56,202 @@
     </nav>
   </header>
   <main>
-    <section>
-      <h1>Portfolio de muebles a medida</h1>
-      <p>Cada proyecto es distinto, porque cada espacio y cada cliente lo son. Estos son algunos de los trabajos que
-        hicimos para transformar ambientes con muebles a medida.</p>
+    <section class="encabezado-pagina split" aria-labelledby="pagina-titulo">
+      <h1 class="titulo-display" id="pagina-titulo">Trabajos.</h1>
+      <p class="copete">Una muestra de los ambientes que resolvemos. Por ahora son imágenes ilustrativas: las vamos a
+        cambiar por fotos de nuestras obras.</p>
+      <p class="copete">6 rubros, 19 fotos.</p>
     </section>
-    <section class="seccion-oscura">
-      <h2>Proyectos realizados</h2>
-      <article data-aos="fade-up">
-        <h3>Proyecto de cocina</h3>
-        <p>Cocina completa fabricada a medida, combinando funcionalidad y estética para el uso diario.</p>
-        <div id="carouselCocina" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="../assets/images/cocina-1.jpg" class="d-block w-100"
-                alt="Cocina a medida en gris oscuro con isla, mesada negra y banquetas, integrada al living">
+
+    <div class="seccion-oscura galeria">
+      <nav class="capitulos-nav" id="capitulos" aria-label="Rubros">
+        <a href="#c-guardado">Placares y vestidores<sup>5</sup></a>
+        <a href="#c-cocinas">Cocinas<sup>1</sup></a>
+        <a href="#c-living">Living y bibliotecas<sup>2</sup></a>
+        <a href="#c-escritorios">Escritorios<sup>4</sup></a>
+        <a href="#c-banos">Baños<sup>4</sup></a>
+        <a href="#c-chicos">Cuartos de chicos<sup>3</sup></a>
+      </nav>
+
+      <section class="capitulo" id="c-guardado" aria-labelledby="t-guardado">
+        <header class="capitulo-encabezado">
+          <span class="capitulo-numero">01</span>
+          <h2 id="t-guardado">Placares y vestidores</h2>
+          <span class="capitulo-cantidad">5 fotos</span>
+        </header>
+        <div class="tira" tabindex="0" aria-label="Fotos de Placares y vestidores, deslizá para ver más">
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/vestidor-nogal.jpg" alt="Placard símil nogal de pared a pared con un sector abierto, ropa colgada y cajones" width="1300" height="867" loading="lazy">
             </div>
-            <div class="carousel-item">
-              <img src="../assets/images/cocina-2.jpg" class="d-block w-100"
-                alt="Detalle de isla de cocina con frente acanalado gris y mesada de mármol negro">
+            <figcaption><span>Placard de nogal</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/vestidor-2.jpg" alt="Vestidor símil madera con cajones abiertos y ropa colgada" width="1300" height="867" loading="lazy">
             </div>
-            <div class="carousel-item">
-              <img src="../assets/images/cocina-3.jpg" class="d-block w-100"
-                alt="Cocina con columnas de madera, vitrina de vidrio y barra desayunadora con banqueta verde">
+            <figcaption><span>Vestidor con cajones</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/dormitorio-placard.jpg" alt="Dormitorio con placard claro y nichos símil madera iluminados" width="1300" height="867" loading="lazy">
             </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselCocina" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselCocina" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-          </button>
+            <figcaption><span>Placard con nichos</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/vestidor-1.jpg" alt="Vestidor símil madera con cajón abierto y luz cálida" width="1300" height="867" loading="lazy">
+            </div>
+            <figcaption><span>Vestidor</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/placard-rincon.jpg" alt="Placard con estantes iluminados junto a un sillón" width="1300" height="867" loading="lazy">
+            </div>
+            <figcaption><span>Placard de living</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
         </div>
-      </article>
-      <article data-aos="fade-up">
-        <h3>Proyecto de living</h3>
-        <p>Estanterías y biblioteca de madera a medida, pensadas para integrarse con el resto del ambiente.</p>
-        <div id="carouselLiving" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="../assets/images/living-1.jpg" class="d-block w-100"
-                alt="Living con estantería de madera empotrada junto al hogar y mesa ratona de madera maciza">
+      </section>
+
+      <section class="capitulo capitulo--solo" id="c-cocinas" aria-labelledby="t-cocinas">
+        <header class="capitulo-encabezado">
+          <span class="capitulo-numero">02</span>
+          <h2 id="t-cocinas">Cocinas</h2>
+          <span class="capitulo-cantidad">1 foto</span>
+        </header>
+        <div class="tira">
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/cocina-isla.jpg" alt="Cocina con isla, banquetas de madera y ventanal al jardín" width="1536" height="1024" loading="lazy">
             </div>
-            <div class="carousel-item">
-              <img src="../assets/images/living-2.jpg" class="d-block w-100"
-                alt="Estantería y aparador de madera con vajilla de cerámica en un living">
-            </div>
-            <div class="carousel-item">
-              <img src="../assets/images/living-3.jpg" class="d-block w-100"
-                alt="Biblioteca de madera de piso a techo con objetos de cerámica en un living luminoso">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselLiving" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselLiving" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-          </button>
+            <figcaption><span>Cocina con isla</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
         </div>
-      </article>
-      <article data-aos="fade-up">
-        <h3>Proyecto de dormitorio</h3>
-        <p>Vestidor completo en melamina, diseñado para aprovechar cada rincón del espacio.</p>
-        <div id="carouselVestidor" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="../assets/images/vestidor-1.jpg" class="d-block w-100"
-                alt="Vestidor a medida en melamina gris con cajoneras, barrales y luz LED en el techo">
+      </section>
+
+      <section class="capitulo" id="c-living" aria-labelledby="t-living">
+        <header class="capitulo-encabezado">
+          <span class="capitulo-numero">03</span>
+          <h2 id="t-living">Living y bibliotecas</h2>
+          <span class="capitulo-cantidad">2 fotos</span>
+        </header>
+        <div class="tira" tabindex="0" aria-label="Fotos de Living y bibliotecas, deslizá para ver más">
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/living-biblioteca.jpg" alt="Living con biblioteca de piso a techo" width="1300" height="867" loading="lazy">
             </div>
-            <div class="carousel-item">
-              <img src="../assets/images/vestidor-2.jpg" class="d-block w-100"
-                alt="Vestidor en pasillo con estantes de madera de piso a techo a ambos lados">
+            <figcaption><span>Biblioteca de living</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/estanteria-cajon.jpg" alt="Estantería con cajón abierto y libros" width="1300" height="867" loading="lazy">
             </div>
-            <div class="carousel-item">
-              <img src="../assets/images/vestidor-3.jpg" class="d-block w-100"
-                alt="Placard abierto de madera clara con cajoneras y estantes en un dormitorio">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselVestidor" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselVestidor" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-          </button>
+            <figcaption><span>Estantería con cajón</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
         </div>
-      </article>
+      </section>
+
+      <section class="capitulo" id="c-escritorios" aria-labelledby="t-escritorios">
+        <header class="capitulo-encabezado">
+          <span class="capitulo-numero">04</span>
+          <h2 id="t-escritorios">Escritorios</h2>
+          <span class="capitulo-cantidad">4 fotos</span>
+        </header>
+        <div class="tira" tabindex="0" aria-label="Fotos de Escritorios, deslizá para ver más">
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/oficina-madera.jpg" alt="Oficina con escritorio y estanterías símil madera" width="1300" height="867" loading="lazy">
+            </div>
+            <figcaption><span>Oficina símil madera</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/escritorio-sol.jpg" alt="Escritorio claro con lámpara y planta junto a la ventana" width="1300" height="1083" loading="lazy">
+            </div>
+            <figcaption><span>Escritorio</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/oficina-greige.jpg" alt="Oficina en tonos claros con estantes iluminados" width="1300" height="867" loading="lazy">
+            </div>
+            <figcaption><span>Oficina en tonos claros</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/escritorio-detalle.jpg" alt="Mueble bajo con cajones y estante iluminado" width="1300" height="1083" loading="lazy">
+            </div>
+            <figcaption><span>Mueble bajo con cajones</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="capitulo" id="c-banos" aria-labelledby="t-banos">
+        <header class="capitulo-encabezado">
+          <span class="capitulo-numero">05</span>
+          <h2 id="t-banos">Baños</h2>
+          <span class="capitulo-cantidad">4 fotos</span>
+        </header>
+        <div class="tira" tabindex="0" aria-label="Fotos de Baños, deslizá para ver más">
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/bano-1.jpg" alt="Vanitory símil madera con mesada de piedra" width="1300" height="867" loading="lazy">
+            </div>
+            <figcaption><span>Vanitory símil madera</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/bano-2.jpg" alt="Vanitory verde con bacha apoyada" width="1300" height="1188" loading="lazy">
+            </div>
+            <figcaption><span>Vanitory verde</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/bano-3.jpg" alt="Vanitory flotante con estante iluminado" width="1300" height="1188" loading="lazy">
+            </div>
+            <figcaption><span>Vanitory flotante</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/bano-4.jpg" alt="Baño completo con vanitory y nichos iluminados" width="1300" height="1188" loading="lazy">
+            </div>
+            <figcaption><span>Baño completo</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="capitulo" id="c-chicos" aria-labelledby="t-chicos">
+        <header class="capitulo-encabezado">
+          <span class="capitulo-numero">06</span>
+          <h2 id="t-chicos">Cuartos de chicos</h2>
+          <span class="capitulo-cantidad">3 fotos</span>
+        </header>
+        <div class="tira" tabindex="0" aria-label="Fotos de Cuartos de chicos, deslizá para ver más">
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/infantil-cama.jpg" alt="Dormitorio infantil con cama y estantes" width="1300" height="867" loading="lazy">
+            </div>
+            <figcaption><span>Cuarto de chicos</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/infantil-estante-1.jpg" alt="Estantería infantil con luz cálida" width="1300" height="1083" loading="lazy">
+            </div>
+            <figcaption><span>Estantería infantil</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+          <figure class="figura">
+            <div class="figura-imagen">
+              <img src="../assets/images/ia/infantil-estante-2.jpg" alt="Estantería infantil con libros y juguetes" width="1300" height="1083" loading="lazy">
+            </div>
+            <figcaption><span>Biblioteca infantil</span><span>Imagen ilustrativa</span></figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
+
+    <section class="seccion-oscura cierre" aria-labelledby="cierre-titulo">
+      <h2 class="titulo-display" id="cierre-titulo">¿Te imaginás el tuyo?</h2>
+      <p class="copete">Contanos qué necesitás y coordinamos una visita.</p>
+      <a class="btn" href="contacto.html">Pedir presupuesto</a>
     </section>
   </main>
     <footer class="pie">

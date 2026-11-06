@@ -1,7 +1,10 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixins" as *;
 
-header {
+// "body > header" = solo el header principal (hijo directo del body).
+// Así no afecta a otros <header> de adentro de la página, como los de cada rubro en Trabajos.
+
+body > header {
   position: absolute;
   top: 0;
   left: 0;
@@ -11,7 +14,7 @@ header {
 
 /* header "simple" (todas las páginas menos index, header sólido en vez de flotante) */
 
-body.header-simple header {
+body.header-simple > header {
   position: static;
   background-color: $bg;
   border-bottom: 1px solid $line;

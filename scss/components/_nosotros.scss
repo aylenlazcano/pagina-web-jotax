@@ -1,0 +1,208 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+// ==========================================================
+// NOSOTROS — encabezado con los nombres, foto pendiente,
+// línea de tiempo y lista de valores.
+// ==========================================================
+
+// ----- Encabezado: "Joel" y "Axel" entran desde lados opuestos -----
+.nosotros-head {
+  padding-inline: $margen-lateral-mobile;
+  overflow-x: clip; // mientras los nombres entran, no generan scroll horizontal
+
+  @include desktop {
+    padding-inline: $margen-lateral;
+  }
+
+  .nombres {
+    font-size: clamp(3.5rem, 13vw, 11rem);
+    line-height: 0.95;
+    max-width: none;
+  }
+
+  .nombre {
+    display: inline-block; // transform no funciona en elementos inline
+    animation: 0.9s $ease-premium both;
+  }
+
+  .nombre-izq {
+    animation-name: entra-izq;
+  }
+
+  .nombre-der {
+    animation-name: entra-der;
+    animation-delay: $retraso-base;
+  }
+
+  .nombre-y {
+    color: $muted;
+  }
+
+  .bajada {
+    max-width: 52ch;
+    margin-top: 1.5rem;
+    color: $muted;
+  }
+}
+
+@keyframes entra-izq {
+  from {
+    opacity: 0;
+    transform: translateX(-30vw);
+  }
+}
+
+@keyframes entra-der {
+  from {
+    opacity: 0;
+    transform: translateX(30vw);
+  }
+}
+
+// ----- Foto de Joel y Axel -----
+.nosotros-foto {
+  margin: 0 $margen-lateral-mobile 4rem;
+
+  @include desktop {
+    margin: 0 $margen-lateral 6rem;
+  }
+
+  img {
+    @include img-cover(auto);
+    display: block;
+    aspect-ratio: 16 / 9;
+
+    @include desktop {
+      aspect-ratio: 21 / 9;
+    }
+  }
+
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: $muted;
+  }
+}
+
+// ----- Línea de tiempo que se dibuja al scrollear -----
+.linea-tiempo {
+  position: relative;
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0 0 0 1.75rem;
+
+  // la línea vertical
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.45rem;
+    bottom: 0.45rem;
+    width: 1px;
+    background-color: $accent;
+    transform-origin: top;
+  }
+
+  li {
+    position: relative;
+    padding-bottom: 2rem;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    // el punto de cada hito, centrado sobre la línea
+    &::before {
+      content: "";
+      position: absolute;
+      left: calc(-1.75rem - 4px);
+      top: 0.45rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: $accent;
+    }
+  }
+
+  .lt-fecha {
+    font-size: 0.85rem;
+    color: $muted;
+  }
+
+  h3 {
+    margin: 0.25rem 0;
+    font-size: 1.25rem;
+  }
+
+  p {
+    margin: 0;
+    color: $muted;
+  }
+}
+
+// Solo en navegadores que soportan animaciones ligadas al scroll.
+// Los demás ven la línea completa, quieta (ese es el fallback).
+@supports (animation-timeline: view()) {
+  .linea-tiempo::before {
+    animation: dibujar-linea linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 50%;
+  }
+}
+
+@keyframes dibujar-linea {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+// ----- Valores (sección oscura) -----
+.valores-foto {
+  margin: 0;
+
+  img {
+    @include img-cover(auto);
+    aspect-ratio: 4 / 5;
+    display: block;
+  }
+
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+.valores-lista {
+  display: grid;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba($on-accent, 0.16);
+  }
+
+  h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  p {
+    margin: 0;
+    max-width: 48ch;
+  }
+}
+
+// Si la persona pidió menos movimiento, no animamos nada
+@media (prefers-reduced-motion: reduce) {
+  .nosotros-head .nombre,
+  .linea-tiempo::before {
+    animation: none;
+  }
+}
