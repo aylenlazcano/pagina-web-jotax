@@ -5,7 +5,7 @@ Sitio web de Jotax Team, taller de muebles a medida en melamina de La Plata. Pro
 🔗 **Sitio publicado:** _(link de Netlify)_
 
 ## Páginas
-- **Inicio** — hero, primera visita con cota, trabajos, antes y después, rubros y preguntas frecuentes.
+- **Inicio** — hero, primera visita con cota, trabajos, antes y después y preguntas frecuentes.
 - **Nosotros** — Joel y Axel, su historia y lo que no negocian.
 - **Servicios** — índice de rubros, cómo trabajamos y por qué melamina.
 - **Trabajos** — galería por rubro, con tiras de fotos deslizables.

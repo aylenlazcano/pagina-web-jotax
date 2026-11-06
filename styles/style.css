@@ -1529,47 +1529,6 @@ input:user-invalid ~ .campo-error {
     }
   }
 }
-.banda {
-  overflow: clip;
-  padding-block: 3.5rem;
-  border-top: 1px solid rgba(34, 32, 29, 0.16);
-}
-
-.banda-tira {
-  display: flex;
-  align-items: center;
-  gap: 0.35em;
-  width: max-content;
-  padding-inline: 6vw;
-  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  font-weight: 300;
-  font-variation-settings: "wdth" 75;
-  font-size: clamp(4rem, 13vw, 12.5rem);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  white-space: nowrap;
-}
-.banda-tira img {
-  width: 0.9em;
-  height: 0.62em;
-  object-fit: cover;
-  border-radius: 999px;
-}
-
-@keyframes correr-banda {
-  to {
-    transform: translateX(calc(-100% + 100vw));
-  }
-}
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .banda-tira {
-      animation: correr-banda linear both;
-      animation-timeline: view();
-      animation-range: cover 0% cover 100%;
-    }
-  }
-}
 .preguntas-foto img {
   opacity: 0;
   transition: opacity 0.45s ease;
